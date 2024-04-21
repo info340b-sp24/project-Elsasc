@@ -1,69 +1,48 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+.card-img-top {
+    height: 200px; 
+    width: 100%; 
+    object-fit: cover; 
 }
-
-.phone-container {
-    width: 100%;
-    max-width: 400px;
-    background: green;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-
-}
-
-.search-bar {
-    display: block;
-    padding: 15px;
-    width: calc(100% - 30px);
-    box-sizing: border-box;
-    margin: 10px auto;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-}
-
-.card-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-    background-color: grey;
-}
-
 .card {
-    background: white;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    height: 100%;
+    background-color: lightgray;  
+}
+.card-body {
+    flex-grow: 1; 
 }
 
-.card-image {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    border-radius: 10px;
+.card-title {
+    font-size: 20px;  
+    font-weight: bold;  
+    color: black;
+    text-align: center; 
+    
 }
 
-.card-info {
-    padding: 10px;
+
+.like-btn {
+    position: absolute;
+    bottom: 10px;  
+    right: 10px;    
+    z-index: 1;
+    background-color: white;
+    color: black; 
+    font-size: 24px; 
+    opacity: 0.7;
+    border: none;
+    border-radius: 50%; 
+    width: 33px; 
+    height: 33px; 
     display: flex;
-    flex-direction: column;
-
-
+    align-items: center; 
+    justify-content: center; 
+    cursor: pointer; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
 }
 
-.description, .rating, .tags {
-    margin-bottom: 5px;
-    align-items: center;
+.like-btn:hover, .like-btn.liked {
+    opacity: 1;
+    color: red; 
 }
