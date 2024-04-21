@@ -1,3 +1,6 @@
+
+/* IGNORE THIS CSS ALL CONTENT IS PRESENT AND USED IN style.css */
+
 html.quiz{
     height: 100%;
   }
@@ -26,7 +29,7 @@ html.quiz{
     width: 250px;
   }
 
-  
+
 @media (min-width: 598px){
   body.quiz {
 

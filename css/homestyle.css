@@ -1,3 +1,6 @@
+
+/* IGNORE THIS CSS ALL CONTENT IS PRESENT AND USED IN style.css */
+
 .card-img-top {
     height: 200px; 
     width: 100%; 
@@ -9,11 +12,11 @@
     height: 100%;
     background-color: lightgray;  
 }
-.card-body {
+.card-body-loc {
     flex-grow: 1; 
 }
 
-.card-title {
+.card-title-loc {
     font-size: 20px;  
     font-weight: bold;  
     color: black;
