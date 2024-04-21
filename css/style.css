@@ -1,0 +1,188 @@
+
+/* timeline page */
+* {
+  box-sizing: border-box;
+}
+
+.timeline_body {
+  background-color: rgb(93, 151, 240)
+}
+
+.timeline_body header {
+  background-color: #8fd7c7;
+}
+
+.timeline_main {
+  display: grid;
+  text-align: center;
+  place-content: center;
+}
+
+.timeline_button {
+  border: 0;
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  background-color: #8fd7c7;
+  background-image: linear-gradient(
+    to top left,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2) 30%,
+    rgba(0, 0, 0, 0)
+  );
+  box-shadow:
+    inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.timeline_button:hover {
+  background-color: #FFE0DB;
+}
+
+.timeline_button:active {
+  box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.Day-list {
+  margin: 0;
+  padding-inline: 0;
+  list-style: none;
+}
+
+.Day-list li {
+  padding: 1rem;
+  color: white;
+  background: #8fd7c7;
+  border: 3px solid #FFE0DB;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem -0.25rem var(--clr-primary-900);
+}
+
+.Day-list li:hover {
+  padding: 1rem;
+  color: black;
+  background: #FFE0DB;
+  border: 3px solid #8fd7c7;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem -0.25rem var(--clr-primary-900);
+}
+
+.scroller {
+  max-width: 650px;
+  overflow: hidden;
+}
+
+.scroller__inner{
+  padding-block: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+form.timeline_addevent {
+  display: table;
+  background-color: white;
+  border: 2px solid black;
+  padding: 1em 1em;
+}
+
+input#discription {
+  width: 250px;
+  height: 100px;
+  margin-bottom: 1rem;
+}
+
+div.timeline_addevent {
+  display: table-row;
+}
+
+label, input {
+  display: table-cell;
+  margin-bottom: 10px;
+}
+
+label {
+  padding-right: 10px;
+}
+
+.timeline {
+  margin: 1rem auto;
+  max-width: 750px;
+  padding: 25px;
+  border-radius: 25px;
+  display: grid;
+  font-family: 'Fira Sans', sans-serif;
+  color: white;
+  grid-template-columns: 1fr 3px 1fr;
+  background-color: #8fd7c7;
+  border: 1px solid lightgoldenrodyellow;
+}
+
+.timeline_components {
+  margin: 0 20px 20px 20px;
+}
+
+.timeline_components--bg {
+  padding: 1.5em;
+  background: skyblue;
+  box-shadow: 0 0 5px rbga(255, 255, 255, 0.2);
+  border-radius: 10px;
+  border: 3px solid #FFE0DB;
+}
+
+.time {
+  align-items: end;
+  text-align: left;
+}
+
+.time--right {
+  text-align: right;
+}
+
+.timeline_middle {
+  position: relative;
+  background: white;
+}
+
+.timeline_point {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15px;
+  height: 15px;
+  background: white;
+  border-radius: 15%;
+}
+
+.time_title {
+  margin: 0;
+  font-size: 1.15em;
+  font-weight: bold;
+}
+
+.time_event {
+  line-height: 1.5;
+}
+
+.timeline_point_bottom {
+  top: initial;
+  bottom: 0;
+}
+
+
+
+@media (min-width: 798px){
+  /* timeline page */
+  .timeline_body {
+    background-image: url('../img/thom-milkovic-seattle-mountain-unsplash.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
