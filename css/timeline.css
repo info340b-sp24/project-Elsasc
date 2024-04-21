@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+.timeline_body {
+  background-color: rgb(93, 151, 240)
+}
+
 .timeline_body header {
   background-color: #8fd7c7;
 }
@@ -106,13 +110,16 @@ label {
 }
 
 .timeline {
-  margin: 0 auto;
+  margin: 1rem auto;
   max-width: 750px;
   padding: 25px;
+  border-radius: 25px;
   display: grid;
   font-family: 'Fira Sans', sans-serif;
-  color: black;
+  color: white;
   grid-template-columns: 1fr 3px 1fr;
+  background-color: #8fd7c7;
+  border: 1px solid lightgoldenrodyellow;
 }
 
 .timeline_components {
@@ -124,9 +131,11 @@ label {
   background: skyblue;
   box-shadow: 0 0 5px rbga(255, 255, 255, 0.2);
   border-radius: 10px;
+  border: 3px solid #FFE0DB;
 }
 
 .time {
+  align-items: end;
   text-align: left;
 }
 
@@ -136,7 +145,7 @@ label {
 
 .timeline_middle {
   position: relative;
-  background: black;
+  background: white;
 }
 
 .timeline_point {
@@ -146,7 +155,7 @@ label {
   transform: translateX(-50%);
   width: 15px;
   height: 15px;
-  background: black;
+  background: white;
   border-radius: 15%;
 }
 
@@ -165,32 +174,10 @@ label {
   bottom: 0;
 }
 
-@media (min-width: 598px){
-  .timeline_body {
-    background-color: rgb(93, 151, 240)
-  }
-
-  .timeline_middle {
-    background: white;
-  }
-
-  .timeline_point {
-    background: white;
-  }
-}
-
 @media (min-width: 798px){
   .timeline_body {
     background-image: url('../img/thom-milkovic-seattle-mountain-unsplash.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-  }
-
-  .timeline_middle {
-    background: white;
-  }
-
-  .timeline_point {
-    background: white;
   }
 }
