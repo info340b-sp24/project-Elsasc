@@ -46,3 +46,24 @@
     opacity: 1;
     color: red; 
 }
+
+body.home-page {
+    background: azure;
+}
+
+
+@media (min-width: 598px){
+    body.home-page {
+  
+      background-color: rgb(154, 190, 243)
+    }
+  
+  }
+    @media (min-width: 798px){
+      body.home-page{
+        background-image: url('../img/austin-wehrwein-seattle-day-unsplash.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+    }

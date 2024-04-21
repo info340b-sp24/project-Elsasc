@@ -15,7 +15,7 @@ html.quiz{
   body.quiz-result{
     font-family: "Helvetica Neue", "Helvetica", sans-serif;
     margin: 0;
-    background-color: rgb(93, 151, 240)
+    background-color: rgb(243, 204, 76)
   }
 
   main.quiz{
@@ -45,7 +45,7 @@ html.quiz{
     }
 
     body.quiz-result{
-      background-image: url('../img/thom-milkovic-seattle-mountain-unsplash.jpg');
+      background-image: url('../img/seattle-placeholder.jpg');
       background-size: cover;
       background-repeat: no-repeat;
     }
