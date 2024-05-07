@@ -243,6 +243,12 @@ body.home-page {
   background: azure;
 }
 
+.copy-right-notes {
+  color: white;
+  margin:0;
+  text-align: center;
+}
+
 /* Media Queries for all pages */
 @media (min-width: 576px){
   body.quiz {
