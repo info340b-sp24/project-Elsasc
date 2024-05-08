@@ -1,29 +1,70 @@
-# INFO 340 Project
+# Getting Started with Create React App
 
-This repository contains code for an interactive information web app, created for the _Client-Side Web Development_ course at the UW iSchool.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Group Members: Cole Elsasser, Vincent Li, Brian Chiang
+## Available Scripts
 
-This repository includes the proposal.html and proposal.css which create the webpage to detail the features of our 
-proposed application "Seattle is FUN". The corresponding gh-page can be found at https://info340b-sp24.github.io/project-Elsasc/proposal.html
+In the project directory, you can run:
 
-This current project includes the static mockups of all aspects of our slides.
-Within you will find 
-- Index page which serves as the home page where all location cards are listed
-- A timeline where a timeline can be made by a user to plan out their travels
-- A quiz to give you reccommended tags that a user might want to pursue. 
-- A quiz results page showing the recommendation (static)
-- A liked location pages demonstrating where users could find locations they had previously hit the "like" button on 
+### `npm start`
 
-Current static mockup gh-pages link: https://info340b-sp24.github.io/project-Elsasc/proposal.html
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-Notes for project draft 1: 
+### `npm test`
 
-To navigate to quiz-results page click submit quiz button (at bottom of quiz page)
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-The other .css files are remnants from earlier and can be ignored, all css from those files is aggregated in the style.css page which is the stylesheet used by all pages.
+### `npm run build`
 
-Script to include bootstrap appears as an error in html checker but this was where I was told to place it by Professor (also it is still functional for implementing bootstrap)
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-As discussed with Professor one of our pages (timeline) primarily functions with html while the rest use bootstrap primarily. This was approved by the Professor and he asked that I note it here. 
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
