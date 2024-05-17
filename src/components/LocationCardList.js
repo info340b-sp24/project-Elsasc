@@ -1,5 +1,4 @@
 
-
 function LocationCard(props){
     const item = props.location;
     console.log(item);

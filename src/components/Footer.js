@@ -21,11 +21,11 @@ export function Footer1() {
             </ListGroup> */}
 
 
-            <ul class="list-inline text-end">
-                <li class="list-inline-item"> Copyright &copy; 2024 Created by</li>
-                <li class="list-inline-item"><a href="mailto: elsascol@uw.edu"style={{color: 'white'}}>elsascol@uw.edu</a></li>
-                <li class="list-inline-item"><a href="mailto: cch0223@uw.edu" style={{color: 'white'}}>cch0223@uw.edu</a></li>
-                <li class="list-inline-item"><a href="mailto: zli2003@uw.edu" style={{color: 'white'}}>zli2003@uw.edu</a></li>
+            <ul className="list-inline text-end">
+                <li className="list-inline-item"> Copyright &copy; 2024 Created by</li>
+                <li className="list-inline-item"><a href="mailto: elsascol@uw.edu"style={{color: 'white'}}>elsascol@uw.edu</a></li>
+                <li className="list-inline-item"><a href="mailto: cch0223@uw.edu" style={{color: 'white'}}>cch0223@uw.edu</a></li>
+                <li className="list-inline-item"><a href="mailto: zli2003@uw.edu" style={{color: 'white'}}>zli2003@uw.edu</a></li>
             </ul>
         </footer>);
 

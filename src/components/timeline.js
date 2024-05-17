@@ -2,7 +2,7 @@
 
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
+import '../index.css';
 
 let currentDay = 1;
 

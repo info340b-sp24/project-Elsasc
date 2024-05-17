@@ -1,5 +1,39 @@
-// import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import { Link } from "react-router-dom";
+import { LocationCardList } from "./LocationCardList";
+import locations from "../data/Location.json"
+
+export function LikedLocation(props) {
+    return (
+        <div>
+            <head>
+                <meta charset="utf-8"></meta>
+                <meta name="author" content="Cole Elsasser, Brian Chiang, Vincent Li"></meta>
+                <meta name="description" content="Liked locations by the user"></meta>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+                <link rel="icon" type="image/x-icon" href="img/space-needle-icon.png"></link>
+
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"></link>
+
+                <link rel="stylesheet" href="css/style.css"></link>
+                <title>Seattle is FUN! Liked Locations</title>
+            </head>
+            <body class="home-page">
+
+                <main>
+                <h1 class="fs-2 text-center"> Locations you liked </h1>
+                    <LocationCardList locations={locations} />
+
+                </main>
+            </body>
+
+        </div>
+    );
+}
+
+
+
+
 
 // export function LikedLocation(props) {
 //   const [likedItems, setLikedItems] = useState([]);

@@ -316,6 +316,8 @@ body.home-page {
     background-image: url('../project-draft/img/austin-wehrwein-seattle-day-unsplash.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    width: 100vw;
+    height: 100%;
   }
 }  
 

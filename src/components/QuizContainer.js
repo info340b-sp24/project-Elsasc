@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.css';
 import { NavBar } from './NavBar';
-
+// NOTE: This const is also present in a json and functions however the image jsx will not
+// Function in a json, this questionArray constant is present to display the img question (Q#4)
 const questionArray = [
 
   // Question 1
@@ -120,8 +121,8 @@ function QuizQuestion(props) {
 
       <div className="card-body">
         <div className="d-grid gap-2 px-2 d-md-block rounded text-center">
-          {questionArray[currentQ].QAnswers.map((answer) =>
-            <button className="btn btn-outline-primary mx-5 my-3" type="button" onClick={handleButtonClick} value={answer.AnsTag} data-bs-toggle="button">{answer.AnsText}</button>)}
+          {questionArray[currentQ].QAnswers.map((answer, index) =>
+            <button key={index} className="btn btn-outline-primary mx-5 my-3" type="button" onClick={handleButtonClick} value={answer.AnsTag} data-bs-toggle="button">{answer.AnsText}</button>)}
         </div>
       </div>
 
