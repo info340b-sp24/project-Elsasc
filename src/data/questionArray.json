@@ -1,0 +1,40 @@
+[
+
+    {
+      "QNum": 1,
+      "QTitle": "If you could choose one place to live forever where would you live?",
+      "QAnswers": [
+        { "AnsText": "Dubai", "AnsTag": "Shopping" },
+        { "AnsText": "A hut in the woods", "AnsTag": "Outdoor" },
+        { "AnsText": "In an arcade", "AnsTag": "Other" },
+        { "AnsText": "In an apartment overlooking the Eiffel Tower", "AnsTag": "Sightseeing" }
+      ]
+    },
+    {
+      "QNum": 2,
+      "QTitle": "What's your idea of a perfect day?",
+      "QAnswers": [
+        { "AnsText": "Spending the day out shopping for all new souvenirs", "AnsTag": "Shopping" },
+        { "AnsText": "Enjoying all the finest dining and three course meals I can", "AnsTag": "Restaurant" },
+        { "AnsText": "Isolated and enjoying the beauty of nature", "AnsTag": "Outdoor" },
+        { "AnsText": "Traveling to historic museums", "AnsTag": "Sightseeing" }
+      ]
+    },
+    {
+      "QNum": 3,
+      "QTitle": "Which of these describes you best?",
+      "QAnswers": [
+        { "AnsText": "I like to go to only the finest dining and shopping centers when I travel", "AnsTag": "Expensive" },
+        { "AnsText": "I like to splurge on vacation but within reason", "AnsTag": "Moderate" },
+        { "AnsText": "My favorite thing is to find a great deal", "AnsTag": "Cheap" },
+        { "AnsText": "My motto is the more free the better the experience", "AnsTag": "Free" }
+      ]
+    },
+    {
+      "QNum": 5,
+      "QTitle": "Would you like to submit?",
+      "QAnswers": [
+        { "AnsText": "Submit", "AnsTag": "submit" }
+      ]
+    }
+  ]

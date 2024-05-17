@@ -206,6 +206,9 @@ main.quiz{
 /*  */
 img.quiz-img {
   width: 250px;
+  /* Get rid of conflicts when button is pressed. */
+  pointer-events: none;
+  user-select: none;
 }
 
 .card-img-top {

@@ -6,5 +6,6 @@ import {Homepage} from './Homepage'
 // Cleaned
 
 export default function App(props){
-    return (<Homepage />);
+    return (
+    <Quiz />);
 }
