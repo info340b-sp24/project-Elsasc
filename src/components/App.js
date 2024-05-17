@@ -7,5 +7,5 @@ import {Homepage} from './Homepage'
 
 export default function App(props){
     return (
-    <Quiz />);
+    <Homepage />);
 }

@@ -1,100 +1,9 @@
 import React, { useEffect, useState } from 'react';
 // import { Link } from "react-router-dom";
-import img1 from "../img/gas-works-park.jpeg";
-import img2 from "../img/e675d232-e8d2-40b1-9f10-e7443fb6dbf2.avif";
-import img3 from "../img/seattle_art_museum.jpg";
-import img4 from "../img/pike_place_market-seattle-washington-public_market.jpeg";
-import img5 from "../img/bellevue-square-center.jpg";
-import img6 from "../img/Ivars.jpg";
-import img7 from "../img/canlis.jpg";
-import img8 from "../img/GameWorks-Seattle.jpg";
-import img9 from "../img/woodland-park-zoo.jpg";
-import img10 from "../img/arboretum.jpg";
+//import locations from './data/Location.json';
+//import Filter from './Filter';
 
 export function Homepage() {
-    const locations = [
-        {
-          imageSrc: img1,
-          title: "Gas Works Park",
-          description: "A beautiful park made from a repurposed industrial area",
-          tags: "Tags: Park, Outdoor",
-          price: "Price: Free",
-          address: "2101 Northlake Way, WA 98103",
-        },
-        {
-          imageSrc: img2,
-          title: "Space Needle",
-          description: "View the downtown area & eat at the Space Needle",
-          tags: "Tags: Sightseeing, Restaurant",
-          price: "Price: Moderate",
-          address: "400 Broad St, Seattle, WA 98109",
-        },
-        {
-          imageSrc: img3,
-          title: "Seattle Art Museum",
-          description: "Local Seattle museum, houses premier art collections",
-          tags: "Tags: Sightseeing, Indoor",
-          price: "Price: Cheap",
-          address: "1300 1st Ave, Seattle, WA 98101",
-        },
-        {
-          imageSrc: img4,
-          title: "Pike Place Market",
-          description: "Most Tourist Visited, popular for seafoods",
-          tags: "Tags: Outdoor, Shopping",
-          price: "Price: Free",
-          address: "85 Pike St, Seattle, WA 98101",
-        },
-        {
-          imageSrc: img5,
-          title: "Bellevue Square Center",
-          description: "Over 200 retail stores, extensive shopping area",
-          tags: "Tags: Shopping, Indoor",
-          price: "Price: Moderate",
-          address: "575 Bellevue Square, Bellevue, WA 98004",
-        },
-        {
-          imageSrc: img6,
-          title: "Ivars",
-          description: "Delicious fish and chips served next to the Puget Sound",
-          tags: "Tags: Restaurant, Outdoor",
-          price: "Price: Moderate",
-          address: "1001 Alaskan Wy Ste. 102, Seattle, WA 98104",
-        },
-        {
-          imageSrc: img7,
-          title: "Canlis",
-          description: "Extremely fine dining with wonderful views",
-          tags: "Tags: Restaurant, Indoor",
-          price: "Price: Expensive",
-          address: "2576 Aurora Ave N, Seattle, WA 98109",
-        },
-        {
-          imageSrc: img8,
-          title: "Gameworks Arcade",
-          description: "A refurbished arcade with a variety of games to choose from.",
-          tags: "Tags: Other, Indoor",
-          price: "Price: Moderate",
-          address: "2576 Aurora Ave N, Seattle, WA 98109",
-        },
-        {
-          imageSrc: img9,
-          title: "Woodland Park Zoo",
-          description: "An fun zoo and aquarium housing many wonderful animals",
-          tags: "Tags: Sightseeing, Outdoor",
-          price: "Price: Moderate",
-          address: "2576 Aurora Ave N, Seattle, WA 98109",
-        },
-        {
-          imageSrc: img10,
-          title: "Washington Park Arboretum",
-          description: "A variety of amazing gardens with different cultural displays",
-          tags: "Tags: Sightseeing, Outdoor",
-          price: "Price: Free",
-          address: "2300 Arboretum Dr E, Seattle, WA 98112",
-        }
-      ];
-
   const [likedItems, setLikedItems] = useState([]);
 
   // useEffect(() => {
@@ -394,34 +303,4 @@ function LocationCardList(props){
   );
 }
 
-function Filter(props) {
-  const tags = ["Indoor", "Outdoor", "Park", "Sightseeing", "Shopping", "Restaurant", "Other"];
-  const prices = ["Free", "Cheap", "Moderate", "Expensive"];
 
-  return (
-    <div className="card border border-dark shadow-lg rounded mb-4">
-      <div className="card-title">
-        <h2 className="fs-2 text-center">Filter</h2>
-      </div>
-      <div className="card-body">
-        <div className="d-grid gap-2 px-2 d-md-block rounded text-center mx-5">
-          <p className="fs-3 text-center">Tags:</p>
-          {tags.map((tag, index) => (
-            <button key={index} className="btn btn-outline-success" type="button" data-bs-toggle="button">
-              {tag}
-            </button>
-          ))}
-
-          <p className="fs-3 text-center">Price:</p>
-          {prices.map((price, index) => (
-            <button key={index} className="btn btn-outline-success" type="button" data-bs-toggle="button">
-              {price}
-            </button>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default Filter;
