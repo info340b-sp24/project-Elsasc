@@ -181,6 +181,7 @@ label {
 /* Quiz Content */
 html.quiz{
   height: 100%;
+
 }
 
 header{
@@ -192,6 +193,11 @@ body.quiz{
   margin: 0;
   background-color: rgb(93, 151, 240);
   height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+
 }
 
 body.quiz-result{
@@ -255,6 +261,18 @@ body.home-page {
   text-align: center;
 }
 
+.footer {
+  background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
+  /* border-top: 2px solid rgb(214, 214, 214); */
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  color: white;
+  font-size: .8rem;
+}
+
+
+
 /* Media Queries for all pages */
 @media (min-width: 576px){
   body.quiz {
@@ -276,13 +294,15 @@ body.home-page {
     background-image: url('../project-draft/img/thom-milkovic-seattle-mountain-unsplash.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
   }
-
-  body.quiz-result{
+  /* Currently irrelevant as the quizresults and quiz page were merged for this draft  */
+  /* body.quiz-result{
     background-image: url('../project-draft/img/seattle-placeholder.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-  }
+  } */
 
   /* timeline page */
   .timeline_body {

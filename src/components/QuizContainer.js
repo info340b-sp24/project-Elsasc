@@ -115,13 +115,13 @@ function QuizQuestion(props) {
   return (
     <div key={currentQ.QNum} className="card border border-dark rounded shadow-lg mb-4">
       <div className="card-title">
-        <h3 className="fs-2 text-center"> {questionArray[currentQ].QNum + ". " + questionArray[currentQ].QTitle}</h3>
+        <h3 className="fs-2 text-start"> {questionArray[currentQ].QNum + ". " + questionArray[currentQ].QTitle}</h3>
       </div>
 
       <div className="card-body">
         <div className="d-grid gap-2 px-2 d-md-block rounded text-center">
           {questionArray[currentQ].QAnswers.map((answer) =>
-            <button className="btn btn-outline-primary" type="button" onClick={handleButtonClick} value={answer.AnsTag} data-bs-toggle="button">{answer.AnsText}</button>)}
+            <button className="btn btn-outline-primary mx-5 my-3" type="button" onClick={handleButtonClick} value={answer.AnsTag} data-bs-toggle="button">{answer.AnsText}</button>)}
         </div>
       </div>
 
@@ -158,7 +158,7 @@ export function QuizContainer(props) {
       <div>
         <div className="d-flex  justify-content-center mx-5">
           <div className="container">
-            <h2 className="text-center py-4"> Quiz - What kind of traveler are you? </h2>
+            <h2 className="text-start py-4"> Quiz - What kind of traveler are you? </h2>
             <div className="row">
               <div className="col bg-auto justify-content-md-center">
                 <QuizQuestionList />

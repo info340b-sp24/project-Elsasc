@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client';
 import '../index.css';
 import { QuizContainer } from './QuizContainer';
 import { NavBar } from './NavBar';
-
+import { Footer1 } from './Footer';
 
 
 export function Quiz(props){
     return(
-    <html className='quiz 'lang="en">
+    <html className='quiz' lang="en">
         
         <head>
           <meta charset="utf-8"></meta>
@@ -26,23 +26,16 @@ export function Quiz(props){
         
         </head>
         
-        <body class="quiz">    
+        <body className="quiz">    
         <header>
             <NavBar />
         </header>
         
-          <main class="quiz">
+          <main className="quiz">
             <QuizContainer />
         </main>
-        <footer>
-          <p class="copy-right-notes"> Copyright &copy; Created by
-              <a href="elsascol@uw.edu">elsascol@uw.edu</a>
-              <a href="cch0223@uw.edu">cch0223@uw.edu</a>
-              <a href="zli2003@uw.edu">zli2003@uw.edu</a>. 2024
-          </p>
-        </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        
+        <Footer1 />
         </body>
     </html>
     );
