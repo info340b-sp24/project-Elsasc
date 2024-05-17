@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.css';
-import { NavBar } from './NavBar';
+
+import tagDescriptions from '../data/TagDescriptions.json'
+
+// JSON Quiz Questions (missing #4)
+import QuizQuestions from '../data/QuizQuestions.json'
 // NOTE: This const is also present in a json and functions however the image jsx will not
 // Function in a json, this questionArray constant is present to display the img question (Q#4)
 const questionArray = [
@@ -60,24 +64,11 @@ const questionArray = [
   }
 ]
 
-const tagDescriptions = {
-  Indoor: "You prefer the great indoors and want a nice spot to explore in the city.",
-  Outdoor: "Your favorite place to be is in nature, you truly feel at home in the outdoors.",
-  Park: "Going to the park is a great passtime and you're looking to explore the wonderful spaces Seattle has to offer.",
-  Sightseeing: "You love to see all the most interesting and unique sights you can find.",
-  Shopping: "A day of looking around the shops is a dream come true for you!",
-  Restaurant: "Your favorite part of travel is sampling all the cuisines the area has to offer.",
-  Other: "You are looking for a unique experience outside of the usual locations people might head to.",
-  Free: "You enjoy fun public spaces open for everyone to enjoy.",
-  Cheap: "You like to be safe with your travel budget.",
-  Moderate: "You like to plan your budget and find the best places that won't break the bank",
-  Expensive: "You are all about experiencing all that Seattle has to offer, price is no object"
-}
-
 
 const taglist = [] // Global Variable to be used to track the tags
-
+// Changes the question and records tag value from each point
 function QuizQuestionList(props) {
+  const quizQuestionJSON = props.quizQuestionsJSON; 
 
   const [currentQ, setCurrentQ] = useState(0);
 
@@ -90,7 +81,6 @@ function QuizQuestionList(props) {
       const nextQ = currentQ + 1
       setCurrentQ(nextQ);
       // Add tags for final calculation
-      console.log(event.target.value)
       taglist.push(event.target.value)
     }
   }
@@ -122,7 +112,7 @@ function QuizQuestion(props) {
       <div className="card-body">
         <div className="d-grid gap-2 px-2 d-md-block rounded text-center">
           {questionArray[currentQ].QAnswers.map((answer, index) =>
-            <button key={index} className="btn btn-outline-primary mx-5 my-3" type="button" onClick={handleButtonClick} value={answer.AnsTag} data-bs-toggle="button">{answer.AnsText}</button>)}
+            <button key={index} className="btn btn-outline-primary me-3 my-3" type="button" onClick={handleButtonClick} value={answer.AnsTag} data-bs-toggle="button">{answer.AnsText}</button>)}
         </div>
       </div>
 
@@ -162,7 +152,7 @@ export function QuizContainer(props) {
             <h2 className="text-start py-4"> Quiz - What kind of traveler are you? </h2>
             <div className="row">
               <div className="col bg-auto justify-content-md-center">
-                <QuizQuestionList />
+                <QuizQuestionList quizQuestionsJSON={QuizQuestions}/>
               </div>
             </div>
           </div>

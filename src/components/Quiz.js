@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import '../index.css';
 import { QuizContainer } from './QuizContainer';
-import { NavBar } from './NavBar';
-import { Footer1 } from './Footer';
 
 
 export function Quiz(props){
@@ -27,15 +25,13 @@ export function Quiz(props){
         </head>
         
         <body className="quiz">    
-        <header>
-            <NavBar />
-        </header>
+        
         
           <main className="quiz">
             <QuizContainer />
-        </main>
+          </main>
         
-        <Footer1 />
+       
         </body>
     </html>
     );

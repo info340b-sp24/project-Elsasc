@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 // import { Link } from "react-router-dom";
 import { LocationCardList } from "./LocationCardList";
-import locations from "../data/Location.json"
 
 export function LikedLocation(props) {
+    const likedLocationList = props.LikedLocationList
     return (
         <div>
             <head>
@@ -22,8 +22,7 @@ export function LikedLocation(props) {
 
                 <main>
                 <h1 class="fs-2 text-center"> Locations you liked </h1>
-                    <LocationCardList locations={locations} />
-
+                    <LocationCardList locations={likedLocationList} />
                 </main>
             </body>
 

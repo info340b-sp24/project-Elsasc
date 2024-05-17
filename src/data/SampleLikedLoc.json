@@ -1,0 +1,19 @@
+[
+    {
+        "imageSrc": "./img/gas-works-park.jpeg",
+        "title": "Gas Works Park",
+        "description": "A beautiful park made from a repurposed industrial area",
+        "tags": "Tags: Park, Outdoor",
+        "price": "Price: Free",
+        "address": "2101 Northlake Way, WA 98103"
+    },
+    {
+        "imageSrc": "./img/Ivars.jpg",
+        "title": "Ivars",
+        "description": "Delicious fish and chips served next to the Puget Sound",
+        "tags": "Tags: Restaurant, Outdoor",
+        "price": "Price: Moderate",
+        "address": "1001 Alaskan Wy Ste. 102, Seattle, WA 98104"
+    }
+   
+]

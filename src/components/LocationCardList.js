@@ -1,6 +1,7 @@
 
 function LocationCard(props){
     const item = props.location;
+    const handleLike = props.handleLike;
     console.log(item);
     const keyVal = props.keyVal;
     return(

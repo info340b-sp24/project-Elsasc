@@ -1,0 +1,13 @@
+{
+    "Indoor": "You prefer the great indoors and want a nice spot to explore in the city.",
+    "Outdoor": "Your favorite place to be is in nature, you truly feel at home in the outdoors.",
+    "Park": "Going to the park is a great passtime and you're looking to explore the wonderful spaces Seattle has to offer.",
+    "Sightseeing": "You love to see all the most interesting and unique sights you can find.",
+    "Shopping": "A day of looking around the shops is a dream come true for you!",
+    "Restaurant": "Your favorite part of travel is sampling all the cuisines the area has to offer.",
+    "Other": "You are looking for a unique experience outside of the usual locations people might head to.",
+    "Free": "You enjoy fun public spaces open for everyone to enjoy.",
+    "Cheap": "You like to be safe with your travel budget.",
+    "Moderate": "You like to plan your budget and find the best places that won't break the bank",
+    "Expensive": "You are all about experiencing all that Seattle has to offer, price is no object"
+  }

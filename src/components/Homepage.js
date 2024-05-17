@@ -6,7 +6,8 @@ import locations from '../data/Location.json'
 import {LocationCardList} from './LocationCardList'
 import { Filter } from './Filter';
 export function Homepage() {
-  // const [likedItems, setLikedItems] = useState([]);
+  const [likedItems, setLikedItems] = useState([]);
+
 
   // useEffect(() => {
   //   const storedLikedItems = localStorage.getItem("likedItems");
@@ -72,6 +73,8 @@ export function Homepage() {
       </header>
 
       <main>
+
+      <h1 className="my-0 py-0">Seattle best locations</h1>
         <div className="container">
           <input
             type="text"
