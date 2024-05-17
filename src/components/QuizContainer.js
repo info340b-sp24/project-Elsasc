@@ -7,7 +7,7 @@ const questionArray = [
 
   // Question 0
   {
-    QNum: '1',
+    QNum: 1,
     QTitle: 'If you could choose one place to live forever where would you live?',
     QAnswers: [
       { AnsText: "Dubai", AnsTag: "Shopping" },
@@ -18,7 +18,7 @@ const questionArray = [
   },
   // Question 1
   {
-    QNum: '2',
+    QNum: 2,
     QTitle: "What's your idea of a perfect day?",
     QAnswers: [
       { AnsText: "Spending the day out shopping for all new souvenirs", AnsTag: "Shopping" },
@@ -29,7 +29,7 @@ const questionArray = [
   },
   // Question 2
   {
-    QNum: '3',
+    QNum: 3,
     QTitle: 'Which of these describes you best?',
     QAnswers: [
       { AnsText: "I like to go to only the finest dining and shopping centers when I travel", AnsTag: "Expensive" },
@@ -40,17 +40,17 @@ const questionArray = [
   },
   // Question 3 
   {
-    QNum: '4',
+    QNum: 4,
     QTitle: 'Which of these images appeals to you the most?',
     QAnswers: [
       { AnsText: <img src="./img/Snoqualmie_Falls.jpeg" className="quiz-img" alt="Snoqualmie Falls"></img>, AnsTag: "Sightseeing" },
-      { AnsText: <img src="./im g/bellevue_mall.jpg" className="quiz-img" alt="The Bellevue Square Mall"></img>, AnsTag: "Shopping" },
+      { AnsText: <img src="./img/bellevue_mall.jpg" className="quiz-img" alt="The Bellevue Square Mall"></img>, AnsTag: "Shopping" },
       { AnsText: <img src="./img/resteraunt.jpg" className="quiz-img" alt="Benihana Chef cooking"></img>, AnsTag: "Restaurant" },
       { AnsText: <img src="./img/Seattle_Museum.jpg" className="quiz-img" alt="The Seattle Art Museum"></img>, AnsTag: "Sightseeing" }
     ]
   },
   {
-    QNum: '5',
+    QNum: 5,
     QTitle: 'Would you like to submit?',
     QAnswers: [
       { AnsText: "Submit", AnsTag: "submit" },
@@ -72,42 +72,42 @@ const tagDescriptions = {
   Expensive: "Test expensive"
 }
 
-let taglist = []
+const taglist = []
 
 function QuizQuestionList(props) {
 
   const [currentQ, setCurrentQ] = useState(0);
 
   const handleButtonClick = (event) => {
-  if (event.target.vale !== 'submit') {
-    const nextQ = currentQ + 1
-    setCurrentQ(nextQ);
-    // Add tags for final calculation
-    taglist.push(event.target.value)
-  }
+    if (event.target.vale !== 'submit') {
+      const nextQ = currentQ + 1
+      setCurrentQ(nextQ);
+      // Add tags for final calculation
+      taglist.push(event.target.value)
+    }
 
   }
 
   console.log(taglist)
 
-  if (currentQ === questionArray.length - 1){
+  if (currentQ === questionArray.length - 1) {
     return (
-    <div className="card border border-dark rounded shadow-lg mb-5 pd-0">
-    <div className="card-title">
-      <h3 className="fs-2 text-center"> Quiz Result</h3>
-    </div>
+      <div className="card border border-dark rounded shadow-lg mb-5 pd-0">
+        <div className="card-title">
+          <h3 className="fs-2 text-center"> Quiz Result</h3>
+        </div>
 
-    <div className="card-body">
-      <div className="d-grid gap-2 px-2 d-md-block rounded">
-        <p className="fs-3"> We would reccommend you look for the following tags that might appeal to you most</p>
-        {taglist.map((tag) =>
-          <p className="fs-4" key={tag}>{tag + ": " + tagDescriptions[tag]}</p>
-        )
-        }
-      </div>
-    </div>
+        <div className="card-body">
+          <div className="d-grid gap-2 px-2 d-md-block rounded">
+            <p className="fs-3"> We would reccommend you look for the following tags that might appeal to you most</p>
+            {taglist.map((tag) =>
+              <p className="fs-4" key={tag}>{tag + ": " + tagDescriptions[tag]}</p>
+            )
+            }
+          </div>
+        </div>
 
-  </div>);
+      </div>);
   }
   else {
     return (
@@ -129,6 +129,43 @@ function QuizQuestionList(props) {
   }
 }
 
+// function QuizQuestion(props) {
+//   <div className="card border border-dark rounded shadow-lg mb-4">
+
+//     <div className="card-title">
+//       <h3 className="fs-2 text-center"> {questionArray[currentQ].QNum + ". " + questionArray[currentQ].QTitle}</h3>
+//     </div>
+
+//     <div className="card-body">
+//       <div className="d-grid gap-2 px-2 d-md-block rounded text-center">
+//         {questionArray[currentQ].QAnswers.map((answer) =>
+//           <button className="btn btn-outline-primary" type="button" onClick={handleButtonClick} value={answer.AnsTag} data-bs-toggle="button">{answer.AnsText}</button>)}
+//       </div>
+//     </div>
+
+//   </div>
+// }
+
+// function QuizResult(props) {
+//   const unqTaglist = [... new Set(taglist)];
+//   return (
+//     <div className="card border border-dark rounded shadow-lg mb-5 pd-0">
+//       <div className="card-title">
+//         <h3 className="fs-2 text-center"> Quiz Result</h3>
+//       </div>
+
+//       <div className="card-body">
+//         <div className="d-grid gap-2 px-2 d-md-block rounded">
+//           <p className="fs-3"> We would reccommend you look for the following tags that might appeal to you most</p>
+//           {unqTaglist.map((tag) =>
+//             <p className="fs-4" key={tag}>{tag + ": " + tagDescriptions[tag]}</p>
+//           )
+//           }
+//         </div>
+//       </div>
+
+//     </div>);
+// }
 
 
 

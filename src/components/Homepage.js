@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
-import img1 from "./public/img/gas-works-park.jpeg";
-import img2 from "./public/img/e675d232-e8d2-40b1-9f10-e7443fb6dbf2.avif";
-import img3 from "./public/img/seattle_art_museum.jpg";
-import img4 from "./public/img/pike_place_market-seattle-washington-public_market.jpeg";
-import img5 from "./public/img/bellevue-square-center.jpg";
-import img6 from "./public/img/Ivars.jpg";
-import img7 from "./public/img/canlis.jpg";
-import img8 from "./public/img/GameWorks-Seattle.jpg";
-import img9 from "./public/img/woodland-park-zoo.jpg";
-import img10 from "./public/img/arboretum.jpg";
+// import { Link } from "react-router-dom";
+import img1 from "../img/gas-works-park.jpeg";
+import img2 from "../img/e675d232-e8d2-40b1-9f10-e7443fb6dbf2.avif";
+import img3 from "../img/seattle_art_museum.jpg";
+import img4 from "../img/pike_place_market-seattle-washington-public_market.jpeg";
+import img5 from "../img/bellevue-square-center.jpg";
+import img6 from "../img/Ivars.jpg";
+import img7 from "../img/canlis.jpg";
+import img8 from "../img/GameWorks-Seattle.jpg";
+import img9 from "../img/woodland-park-zoo.jpg";
+import img10 from "../img/arboretum.jpg";
 
-function Homepage() {
+export function Homepage() {
     const locations = [
         {
           imageSrc: img1,
@@ -97,31 +97,31 @@ function Homepage() {
 
   const [likedItems, setLikedItems] = useState([]);
 
-  useEffect(() => {
-    const storedLikedItems = localStorage.getItem("likedItems");
-    if (storedLikedItems) {
-      setLikedItems(JSON.parse(storedLikedItems));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const storedLikedItems = localStorage.getItem("likedItems");
+  //   if (storedLikedItems) {
+  //     setLikedItems(JSON.parse(storedLikedItems));
+  //   }
+  // }, []);
 
-  const handleLike = (item) => {
-    const updatedLikedItems = [...likedItems, item];
-    setLikedItems(updatedLikedItems);
-    localStorage.setItem("likedItems", JSON.stringify(updatedLikedItems));
-  };
+  // const handleLike = (item) => {
+  //   const updatedLikedItems = [...likedItems, item];
+  //   setLikedItems(updatedLikedItems);
+  //   localStorage.setItem("likedItems", JSON.stringify(updatedLikedItems));
+  // };
 
   return (
     <>
       <header>
-        <h1 class="my-0 py-0 bg-light">Homepage - Seattle best locations</h1>
+        <h1 className="my-0 py-0 bg-light">Homepage - Seattle best locations</h1>
 
-        <nav class="navbar navbar-expand-lg bg-light navbar-light">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="/">
+        <nav className="navbar navbar-expand-lg bg-light navbar-light">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="/">
               Seattle is FUN!
             </a>
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarNav"
@@ -129,12 +129,12 @@ function Homepage() {
               aria-expanded="false"
               aria-label="Toggle navigation bar"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <Link class="nav-link active" aria-current="page" to="/">
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav">
+                {/* <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" to="/">
                     Home
                   </Link>
                 </li>
@@ -152,7 +152,7 @@ function Homepage() {
                   <Link class="nav-link" to="/likedLocation">
                     Liked Locations
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
@@ -160,97 +160,97 @@ function Homepage() {
       </header>
 
       <main>
-        <div class="container">
+        <div className="container">
           <input
             type="text"
-            class="form-control mb-3 my-3"
+            className="form-control mb-3 my-3"
             placeholder="Search..."
           />
 
-          <div class="row">
-            <div class="col bg-auto justify-content-md-center mx-5">
+          <div className="row">
+            <div className="col bg-auto justify-content-md-center mx-5">
               {/* <!-- Filter --> */}
-              <div class="card border border-dark shadow-lg rounded mb-4">
-                <div class="card-title">
-                  <h2 class="fs-2 text-center">Filter</h2>
+              <div className="card border border-dark shadow-lg rounded mb-4">
+                <div className="card-title">
+                  <h2 className="fs-2 text-center">Filter</h2>
                 </div>
-                <div class="card-body">
-                  <div class="d-grid gap-2 px-2 d-md-block rounded text-center mx-5">
-                    <p class="fs-3 text-center">Tags:</p>
+                <div className="card-body">
+                  <div className="d-grid gap-2 px-2 d-md-block rounded text-center mx-5">
+                    <p className="fs-3 text-center">Tags:</p>
                     <button
-                      class="btn btn-outline-success"
+                      className="btn btn-outline-success"
                       type="button"
                       data-bs-toggle="button"
                     >
                       Indoor
                     </button>
                     <button
-                      class="btn btn-outline-success"
+                      className="btn btn-outline-success"
                       type="button"
                       data-bs-toggle="button"
                     >
                       Outdoor
                     </button>
                     <button
-                      class="btn btn-outline-success"
+                      className="btn btn-outline-success"
                       type="button"
                       data-bs-toggle="button"
                     >
                       Park
                     </button>
                     <button
-                      class="btn btn-outline-success"
+                      className="btn btn-outline-success"
                       type="button"
                       data-bs-toggle="button"
                     >
                       Sightseeing
                     </button>
                     <button
-                      class="btn btn-outline-success"
+                      className="btn btn-outline-success"
                       type="button"
                       data-bs-toggle="button"
                     >
                       Shopping
                     </button>
                     <button
-                      class="btn btn-outline-success"
+                      className="btn btn-outline-success"
                       type="button"
                       data-bs-toggle="button"
                     >
                       Restaurant
                     </button>
                     <button
-                      class="btn btn-outline-success"
+                      className="btn btn-outline-success"
                       type="button"
                       data-bs-toggle="button"
                     >
                       Other
                     </button>
 
-                    <p class="fs-3 text-center">Price:</p>
+                    <p className="fs-3 text-center">Price:</p>
                     <button
-                      class="btn btn-outline-success"
+                      className="btn btn-outline-success"
                       type="button"
                       data-bs-toggle="button"
                     >
                       Free
                     </button>
                     <button
-                      class="btn btn-outline-success"
+                      className="btn btn-outline-success"
                       type="button"
                       data-bs-toggle="button"
                     >
                       Cheap
                     </button>
                     <button
-                      class="btn btn-outline-success"
+                      className="btn btn-outline-success"
                       type="button"
                       data-bs-toggle="button"
                     >
                       Moderate
                     </button>
                     <button
-                      class="btn btn-outline-success"
+                      className="btn btn-outline-success"
                       type="button"
                       data-bs-toggle="button"
                     >
@@ -261,9 +261,12 @@ function Homepage() {
               </div>
             </div>
           </div>
-
           {/* <!-- Location Cards --> */}
-          <h2 class="fs-2 text-center">Locations</h2>
+          /* <h2 class="fs-2 text-center">Locations</h2>
+          <div class="row">
+          <LocationCardList locations={locations}/>
+          </div>
+          {/* <h2 class="fs-2 text-center">Locations</h2>
           <div class="row">
             {locations.map((item, index) => (
               <div key={index} className="col-12 col-lg-4 col-xl-3 my-3">
@@ -295,8 +298,8 @@ function Homepage() {
                     ♥
                   </button>
                 </div>
-              </div>
-            ))}
+              </div> */}
+            {/* ))} */}
 
             {/* <div class="col-12 col-lg-4 col-xl-3 my-3">
               <div class="card rounded">
@@ -326,11 +329,11 @@ function Homepage() {
                 <button class="btn like-btn">♥</button>
               </div>
             </div> */}
-          </div>
+          {/* </div> */}
         </div>
       </main>
       <footer>
-        <p class="copy-right-notes">
+        <p className="copy-right-notes">
           Copyright &copy; Created by
           <a href="elsascol@uw.edu">elsascol@uw.edu</a>
           <a href="cch0223@uw.edu">cch0223@uw.edu</a>
@@ -340,3 +343,148 @@ function Homepage() {
     </>
   );
 }
+
+function LocationCard(props){
+    const item = props.location;
+    console.log(item);
+    const keyVal = props.keyVal;
+    return(
+    <div key={keyVal} className="col-12 col-lg-4 col-xl-3 my-3">
+                <div className="card rounded">
+                  <img
+                    src={item.imageSrc}
+                    alt={item.title}
+                    className="card-img-top"
+                  />
+                  <div className="card-body">
+                    <p className="card-title">{item.title}</p>
+                    <div>
+                      <ul className="list-group">
+                        <li className="list-group-item description">
+                          {item.description}
+                        </li>
+                        <li className="list-group-item tags">{item.tags}</li>
+                        <li className="list-group-item price">{item.price}</li>
+                        <li className="list-group-item address">
+                          {item.address}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <button
+                    className="btn like-btn"
+                    // onClick={() => handleLike(item)}
+                  >
+                    ♥
+                  </button>
+                </div>
+              </div>
+    );
+}
+
+function LocationCardList(props){
+  const locations = props.locations;
+  const locationList = locations.map((location, index) => {
+    return(<LocationCard location={location} keyVal={index}/>);
+  })
+  return (
+    <section className = "LocationCardList">
+      {locationList}
+    </section>
+  );
+}
+
+// function Filter(props){
+//   <div class="card border border-dark shadow-lg rounded mb-4">
+//                 <div class="card-title">
+//                   <h2 class="fs-2 text-center">Filter</h2>
+//                 </div>
+                
+//                 <div class="card-body">
+//                   <div class="d-grid gap-2 px-2 d-md-block rounded text-center mx-5">
+//                     <p class="fs-3 text-center">Tags:</p>
+//                     <button
+//                       class="btn btn-outline-success"
+//                       type="button"
+//                       data-bs-toggle="button"
+//                     >
+//                       Indoor
+//                     </button>
+//                     <button
+//                       class="btn btn-outline-success"
+//                       type="button"
+//                       data-bs-toggle="button"
+//                     >
+//                       Outdoor
+//                     </button>
+//                     <button
+//                       class="btn btn-outline-success"
+//                       type="button"
+//                       data-bs-toggle="button"
+//                     >
+//                       Park
+//                     </button>
+//                     <button
+//                       class="btn btn-outline-success"
+//                       type="button"
+//                       data-bs-toggle="button"
+//                     >
+//                       Sightseeing
+//                     </button>
+//                     <button
+//                       class="btn btn-outline-success"
+//                       type="button"
+//                       data-bs-toggle="button"
+//                     >
+//                       Shopping
+//                     </button>
+//                     <button
+//                       class="btn btn-outline-success"
+//                       type="button"
+//                       data-bs-toggle="button"
+//                     >
+//                       Restaurant
+//                     </button>
+//                     <button
+//                       class="btn btn-outline-success"
+//                       type="button"
+//                       data-bs-toggle="button"
+//                     >
+//                       Other
+//                     </button>
+
+//                     <p class="fs-3 text-center">Price:</p>
+//                     <button
+//                       class="btn btn-outline-success"
+//                       type="button"
+//                       data-bs-toggle="button"
+//                     >
+//                       Free
+//                     </button>
+//                     <button
+//                       class="btn btn-outline-success"
+//                       type="button"
+//                       data-bs-toggle="button"
+//                     >
+//                       Cheap
+//                     </button>
+//                     <button
+//                       class="btn btn-outline-success"
+//                       type="button"
+//                       data-bs-toggle="button"
+//                     >
+//                       Moderate
+//                     </button>
+//                     <button
+//                       class="btn btn-outline-success"
+//                       type="button"
+//                       data-bs-toggle="button"
+//                     >
+//                       Expensive
+//                     </button>
+//                   </div>
+//                 </div>
+//               </div>
+          
+          
+// }
