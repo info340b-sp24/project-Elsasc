@@ -27,8 +27,8 @@
 
 .like-btn {
     position: absolute;
-    bottom: 10px;  
-    right: 10px;    
+    bottom: 20px;  
+    right: 20px;    
     z-index: 1;
     background-color: white;
     color: black; 
@@ -43,6 +43,7 @@
     justify-content: center; 
     cursor: pointer; 
     box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+    outline: none;
 }
 
 .like-btn:hover, .like-btn.liked {
