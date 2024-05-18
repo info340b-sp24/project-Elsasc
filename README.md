@@ -68,3 +68,35 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Project 2 Overview and Documentation:
+## Requirements Checklist for Team
+1. React application created
+2. Components all rendered in react: Key components are Homepage, Quiz, Timeline, LikedPages (also NavBar and Footer)
+- Note Quiz-Results is now merged with Quiz and interactive
+3. Interactivity: Our Quiz page is interactive and specifically the interaction takes place in the QuizContainer file. Quiz will intake responses from the user and will give recommended search tags based on how the user responds.
+4. Improved overall look of page by implemeting improved navbar and coloration, alongside minor changes made to cards and filter size slightly changed.
+5. Firebase hosting: https://info340bb8.web.app/homepage
+6. Entire team contributed to the draft.
+
+## Revisions Locations Notes: 
+### Content and HTML Structure (~20%)
+- Footer with copyright included in Footer.js and rendered in the App.js X
+- Added author and description to metadata for pages (Quiz.js, Homepage.js, LikedLocations.js, timeline.js) 
+
+### Site Style and CSS Structure (~30%)
+- Removed excess CSS files and stored style.css project.html and index.css(old) in the project-draft1 folder 
+- Filter was slightly shrunk and text reformatted to be left-right rather than centered
+
+### Accessibility (~15%)
+- Ensured the card section was in line with the card sectioning format recommended by bootstrap (LocationCardList.js)
+
+
+### Responsive Design
+- Added viewport meta to all files (Quiz.js, Homepage.js, LikedLocations.js, timeline.js) 
+- Decentralized a few text elements titles and feature content (Filter, Quiz Questions)
+
+## General Notes:
+- Ran into odd issue where HTML elements cannot be within div, doesn't impact but gives warning as a div is used to bind the app folder together. 
+- Commented out code is mostly the work in progress implementation of additional interactive features
+

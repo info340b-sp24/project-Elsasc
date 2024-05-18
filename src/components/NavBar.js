@@ -23,10 +23,10 @@ export function NavBar(props) {
             <Nav>
               <Link className="nav-link" to="/liked-locations">Liked Locations</Link>
               </Nav>
-              <Nav href="#timeline">
+              <Nav>
               <Link className="nav-link" to="/timeline">Timeline</Link>
               </Nav>
-              <Nav href="#timeline">
+              <Nav>
               <Link className="nav-link" to="/quiz">Quiz</Link>
               </Nav>
             
@@ -37,4 +37,3 @@ export function NavBar(props) {
     </header>
   );
 }
-// href="#timeline

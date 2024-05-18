@@ -23,55 +23,17 @@ export function Homepage() {
   // };
 
   return (
+  <html lang='en'>
+  <head>
+  <meta charSet="UTF-8"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+  <meta name="description" content="Explore the best locations in Seattle. Find parks, restaurants, shopping areas, and more."></meta>
+  <meta name="author" content="Vincent, Cole, Brian"></meta>
+  <title>SeattleIsFun - Home</title>
+  </head>
+  
     <body className='home-page'>
-      {/* <header>
-        <h1 className="my-0 py-0 bg-light">Homepage - Seattle best locations</h1>
-
-        <nav className="navbar navbar-expand-lg bg-light navbar-light">
-          <div className="container-fluid">
-            <a className="navbar-brand" href="/">
-              Seattle is FUN!
-            </a>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation bar"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav"> */}
-              
-                {/* <li className="nav-item">
-                  <Link className="nav-link active" aria-current="page" to="/">
-                    Home
-                  </Link>
-                </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/">
-                    Quiz
-                  </Link>
-                </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/">
-                    Timeline
-                  </Link>
-                </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/likedLocation">
-                    Liked Locations
-                  </Link>
-                </li> */}
-              {/* </ul>
-            </div>
-          </div>
-        </nav>
-      </header> */}
-
+    
       <main>
 
       <h1 className="my-0 py-0">Seattle best locations</h1>
@@ -99,5 +61,6 @@ export function Homepage() {
       </main>
       
     </body>
+  </html>
   );
 }
