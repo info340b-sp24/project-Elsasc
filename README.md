@@ -99,4 +99,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ## General Notes:
 - Ran into odd issue where HTML elements cannot be within div, doesn't impact but gives warning as a div is used to bind the app folder together. 
 - Commented out code is mostly the work in progress implementation of additional interactive features
+- The QuizContainer file has a const variable using holding the quiz objects. This is there to allow for the img question to be asked as img elements cannot be stored in the JSON. JSON functionality is also working but doesn't include Q#4. The JSON with the quiz questions is passed as a prop however the constant is used so that question 4 can be displayed. 
 

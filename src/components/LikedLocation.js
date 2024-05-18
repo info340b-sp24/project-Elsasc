@@ -5,9 +5,9 @@ import { LocationCardList } from "./LocationCardList";
 export function LikedLocation(props) {
     const likedLocationList = props.LikedLocationList
     return (
-        <div>
+        <html className='liked-locations' lang='en'>
             <head>
-                <meta charset="utf-8"></meta>
+                <meta charSet="utf-8"></meta>
                 <meta name="author" content="Cole Elsasser, Brian Chiang, Vincent Li"></meta>
                 <meta name="description" content="Liked locations by the user"></meta>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
@@ -18,15 +18,17 @@ export function LikedLocation(props) {
                 <link rel="stylesheet" href="css/style.css"></link>
                 <title>Seattle is FUN! Liked Locations</title>
             </head>
-            <body class="home-page">
+            <body className="home-page">
 
                 <main>
-                <h1 class="fs-2 text-start"> Locations you liked </h1>
+                <h1 className="fs-2 text-start"> Locations you liked </h1>
+                <div className="container">
                     <LocationCardList locations={likedLocationList} />
+                </div>
                 </main>
             </body>
 
-        </div>
+        </html>
     );
 }
 

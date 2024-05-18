@@ -14,6 +14,29 @@
         "tags": "Tags: Restaurant, Outdoor",
         "price": "Price: Moderate",
         "address": "1001 Alaskan Wy Ste. 102, Seattle, WA 98104"
+    },
+    {
+        "imageSrc": "./img/GameWorks-Seattle.jpg",
+        "title": "Gameworks Arcade",
+        "description": "A refurbished arcade with a variety of games to choose from.",
+        "tags": "Tags: Other, Indoor",
+        "price": "Price: Moderate",
+        "address": "2576 Aurora Ave N, Seattle, WA 98109"
+    },
+    {
+        "imageSrc": "./img/woodland-park-zoo.jpg",
+        "title": "Woodland Park Zoo",
+        "description": "An fun zoo and aquarium housing many wonderful animals",
+        "tags": "Tags: Sightseeing, Outdoor",
+        "price": "Price: Moderate",
+        "address": "2576 Aurora Ave N, Seattle, WA 98109"
+    },
+    {
+        "imageSrc": "./img/arboretum.jpg",
+        "title": "Washington Park Arboretum",
+        "description": "A variety of amazing gardens with different cultural displays",
+        "tags": "Tags: Sightseeing, Outdoor",
+        "price": "Price: Free",
+        "address": "2300 Arboretum Dr E, Seattle, WA 98112"
     }
-   
 ]

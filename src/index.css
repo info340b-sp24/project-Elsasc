@@ -5,6 +5,9 @@
  * {
   box-sizing: border-box;
 }
+html.liked-locations{
+  height: 100%;
+}
 
 .timeline_body {
   background-color: rgb(93, 151, 240)
@@ -319,6 +322,7 @@ body.home-page {
     width: 100vw;
     height: 100%;
   }
+
 }  
 
 

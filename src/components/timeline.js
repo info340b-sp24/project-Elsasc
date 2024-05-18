@@ -20,7 +20,7 @@ export function Timeline(props) {
 function TimelineHead(props) {
   return (
     <head>
-      <meta charset="utf-8"/>
+      <meta charSet="utf-8"/>
       <meta name="author" content="Cole Elsasser, Brian Chiang, Vincent Li"/>
       <meta name="description" content="Timeline page for user to customize"/>
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
