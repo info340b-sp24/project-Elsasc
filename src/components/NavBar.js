@@ -17,18 +17,18 @@ export function NavBar(props) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav>
-            <Nav.Link>
+            <Nav>
               <Link className="nav-link" to="/homepage">Home</Link>
-              </Nav.Link>
-            <Nav.Link>
+              </Nav>
+            <Nav>
               <Link className="nav-link" to="/liked-locations">Liked Locations</Link>
-              </Nav.Link>
-              <Nav.Link href="#timeline">
+              </Nav>
+              <Nav href="#timeline">
               <Link className="nav-link" to="/timeline">Timeline</Link>
-              </Nav.Link>
-              <Nav.Link href="#timeline">
+              </Nav>
+              <Nav href="#timeline">
               <Link className="nav-link" to="/quiz">Quiz</Link>
-              </Nav.Link>
+              </Nav>
             
           </Nav>
         </Navbar.Collapse>
