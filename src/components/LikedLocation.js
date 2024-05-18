@@ -21,7 +21,7 @@ export function LikedLocation(props) {
             <body class="home-page">
 
                 <main>
-                <h1 class="fs-2 text-center"> Locations you liked </h1>
+                <h1 class="fs-2 text-start"> Locations you liked </h1>
                     <LocationCardList locations={likedLocationList} />
                 </main>
             </body>
@@ -31,7 +31,7 @@ export function LikedLocation(props) {
 }
 
 
-
+//  Interactivity testing (work in progress)
 
 
 // export function LikedLocation(props) {

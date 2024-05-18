@@ -36,51 +36,51 @@ function TimelineHead(props) {
 function TimelineBody(props) {
   return (
     <body className='timeline_body'>
-      <Header />
+      {/* <Header /> */}
       <MainComponents />
-      <Footer />
+      {/* <Footer /> */}
     </body>
   )
 };
 
-function Header(props) {
-  return (
-    <header>
-      <h1 className='my-0 py-0 bg-light'>Timeline - To Customize your Traveling Plan</h1>
-      <NavBar />
-    </header>
-  );
-}
+// function Header(props) {
+//   return (
+//     <header>
+//       <h1 className='my-0 py-0 bg-body'>Timeline - To Customize your Traveling Plan</h1>
+//       {/* <NavBar /> */}
+//     </header>
+//   );
+// }
 
-function NavBar(props) {
-  return (
-    <nav className='navbar navbar-expand-lg bg-light navbar-light'>
-      <div className='container-fluid'>
-        <a className='navbar-brand' href="#">Seattle is FUN!</a>
-        <button className='navbar-toggler' type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className='navbar-toggler-icon'></span>
-        </button>
-        <div className='collapse navbar-collapse' id="navbarNav">
-          <ul className='navbar-nav'>
-            <li className='nav-item'>
-              <a className='nav-link active' aria-current="page" href="index.html">Home</a>
-            </li>
-            <li className='nav-item'>
-              <a className='nav-link' href="quiz.html">Quiz</a>
-            </li>
-            <li className='nav-item'>
-              <a className='nav-link' href="timeline.html">Timeline</a>
-            </li>
-            <li className='nav-item'>
-              <a className='nav-link' href="liked-locations.html">Liked Locations</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  );
-}
+// function NavBar(props) {
+//   return (
+//     <nav className='navbar navbar-expand-lg bg-light navbar-light'>
+//       <div className='container-fluid'>
+//         <a className='navbar-brand' href="#">Seattle is FUN!</a>
+//         <button className='navbar-toggler' type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+//           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+//           <span className='navbar-toggler-icon'></span>
+//         </button>
+//         <div className='collapse navbar-collapse' id="navbarNav">
+//           <ul className='navbar-nav'>
+//             <li className='nav-item'>
+//               <a className='nav-link active' aria-current="page" href="index.html">Home</a>
+//             </li>
+//             <li className='nav-item'>
+//               <a className='nav-link' href="quiz.html">Quiz</a>
+//             </li>
+//             <li className='nav-item'>
+//               <a className='nav-link' href="timeline.html">Timeline</a>
+//             </li>
+//             <li className='nav-item'>
+//               <a className='nav-link' href="liked-locations.html">Liked Locations</a>
+//             </li>
+//           </ul>
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// }
 
 function MainComponents(props) {
   return (
@@ -193,14 +193,14 @@ function TimeEvent(props) {
   );
 }
 
-function Footer(props) {
-  return (
-    <footer>
-      <p class="copy-right-notes"> Copyright &copy; Created by
-          <a href="elsascol@uw.edu">elsascol@uw.edu</a>
-          <a href="cch0223@uw.edu">cch0223@uw.edu</a>
-          <a href="zli2003@uw.edu">zli2003@uw.edu</a>. 2024
-      </p>
-    </footer>
-  );
-}
+// function Footer(props) {
+//   return (
+//     <footer>
+//       <p class="copy-right-notes"> Copyright &copy; Created by
+//           <a href="elsascol@uw.edu">elsascol@uw.edu</a>
+//           <a href="cch0223@uw.edu">cch0223@uw.edu</a>
+//           <a href="zli2003@uw.edu">zli2003@uw.edu</a>. 2024
+//       </p>
+//     </footer>
+//   );
+// }

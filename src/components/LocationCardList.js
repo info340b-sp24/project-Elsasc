@@ -2,18 +2,18 @@
 function LocationCard(props){
     const item = props.location;
     const handleLike = props.handleLike;
-    console.log(item);
     const keyVal = props.keyVal;
     return(
-    <div key={keyVal} className="col-12 col-lg-4 col-xl-3 my-3">
-                <div className="card rounded">
+      
+      <div className="col my-5">
+                <div className="card rounded border border-dark">
                   <img
                     src={item.imageSrc}
                     alt={item.title}
                     className="card-img-top"
                   />
                   <div className="card-body">
-                    <p className="card-title">{item.title}</p>
+                    <p className="card-title fs-4">{item.title}</p>
                     <div>
                       <ul className="list-group">
                         <li className="list-group-item description">
@@ -34,18 +34,21 @@ function LocationCard(props){
                     ♥
                   </button>
                 </div>
-              </div>
+      </div>
     );
 }
 
 export function LocationCardList(props){
   const locations = props.locations;
   const locationList = locations.map((location, index) => {
-    return(<LocationCard location={location} keyVal={index}/>);
+    return(<div key={index}>
+      <LocationCard location={location} keyVal={index} key={index}/>
+      </div>);
+      
   })
   return (
-    <section className = "LocationCardList">
+    <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4">
       {locationList}
-    </section>
+    </div>
   );
 }

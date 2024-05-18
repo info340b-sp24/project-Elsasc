@@ -31,7 +31,6 @@ export function Quiz(props){
             <QuizContainer />
           </main>
         
-       
         </body>
     </html>
     );

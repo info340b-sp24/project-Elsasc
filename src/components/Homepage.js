@@ -24,7 +24,7 @@ export function Homepage() {
 
   return (
     <body className='home-page'>
-      <header>
+      {/* <header>
         <h1 className="my-0 py-0 bg-light">Homepage - Seattle best locations</h1>
 
         <nav className="navbar navbar-expand-lg bg-light navbar-light">
@@ -44,7 +44,7 @@ export function Homepage() {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav">
+              <ul className="navbar-nav"> */}
               
                 {/* <li className="nav-item">
                   <Link className="nav-link active" aria-current="page" to="/">
@@ -66,11 +66,11 @@ export function Homepage() {
                     Liked Locations
                   </Link>
                 </li> */}
-              </ul>
+              {/* </ul>
             </div>
           </div>
         </nav>
-      </header>
+      </header> */}
 
       <main>
 
@@ -87,14 +87,14 @@ export function Homepage() {
               {/* <!-- Filter --> */}
              
                 <Filter/>
-              </div>
             </div>
+          </div>
          
           {/* <!-- Location Cards --> */}
-          /* <h2 className="fs-2 text-center">Locations</h2>
-          <div className="row">
+          
+          <h2 className="fs-2 text-center">Locations</h2>
+          
           <LocationCardList locations={locations}/>
-          </div>
           </div>
       </main>
       

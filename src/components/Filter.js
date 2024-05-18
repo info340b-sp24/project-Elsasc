@@ -5,7 +5,7 @@ export function Filter(props) {
     const prices = ["Free", "Cheap", "Moderate", "Expensive"];
   
     return (
-      <div className="card border border-dark shadow-lg rounded mb-5, mx-5">
+      <div className="card border border-dark shadow-lg rounded mb-5 mx-5">
         <div className="card-title">
           <h2 className="fs-2 text-center">Filter</h2>
         </div>
