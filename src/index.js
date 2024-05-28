@@ -5,6 +5,24 @@ import App from './components/App';
 import { BrowserRouter } from 'react-router-dom'
 
 // Cleaned but might need to remove more. 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCZiB_2m81C4qZQzJ_4aA6XjvnDdB8dwgA",
+  authDomain: "info340bb8.firebaseapp.com",
+  projectId: "info340bb8",
+  storageBucket: "info340bb8.appspot.com",
+  messagingSenderId: "696164339657",
+  appId: "1:696164339657:web:b315bfb124af0754e16218"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

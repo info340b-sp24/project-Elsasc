@@ -3,6 +3,10 @@ function LocationCard(props){
     const item = props.location;
     const handleLike = props.handleLike;
     const keyVal = props.keyVal;
+    const tagsList = item.tags.map((tag) => {
+      return (<li className="list-group-item tag">{tag}</li>);
+    });
+    console.log(item.tags)
     return(
       
       <div className="col my-5">
@@ -19,8 +23,12 @@ function LocationCard(props){
                         <li className="list-group-item description">
                           {item.description}
                         </li>
-                        <li className="list-group-item tags">{item.tags}</li>
-                        <li className="list-group-item price">{item.price}</li>
+                        <li className="list-group-item tagsList"> Tags:
+                          <ul className="list-group list-group-horizontal"> 
+                          {tagsList}
+                          </ul>
+                          </li>
+                        <li className="list-group-item price">{"Price: " + item.price}</li>
                         <li className="list-group-item address">
                           {item.address}
                         </li>

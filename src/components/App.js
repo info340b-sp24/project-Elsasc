@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import '../index.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -15,6 +15,9 @@ import { BrowserRouter } from 'react-dom/client';
 import SampleLikedLocations from '../data/SampleLikedLoc.json'
 
 export default function App(props){
+ 
+    
+    
     return (
     <div>
     <NavBar/>
