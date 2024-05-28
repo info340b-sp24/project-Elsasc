@@ -48,7 +48,7 @@ export function Homepage() {
             <div className="col bg-auto justify-content-md-center mx-5">
               {/* <!-- Filter --> */}
              
-                <Filter/>
+                <Filter applyFilterCallback={props.applyFilterCallback}/>
             </div>
           </div>
          

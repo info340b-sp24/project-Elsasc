@@ -4,16 +4,23 @@ import Button from 'react-bootstrap/Button';
 
 
 export function Filter(props) {
-  
+  // FILTER BUTTON WIP
   const [buttonActive, setButtonActive] = useState(false);
+  
+
+  const [priceTracker, setPriceTracker] = useState('')
+  const [tagTracker, setTagTracker] = useState([])
+
 
   function handleButtonClick(){
     setButtonActive(!buttonActive)
+    props.applyFilterCallback()
   }
-  let buttonColor = 'white'
-  if (buttonActive){
 
-  }
+  // let buttonColor = 'white'
+  // if (buttonActive){
+  //   //  Set button to desired color to activate
+  // }
 
   const tags = ["Indoor", "Outdoor", "Park", "Sightseeing", "Shopping", "Restaurant", "Other"];
   const prices = ["Free", "Cheap", "Moderate", "Expensive"];
