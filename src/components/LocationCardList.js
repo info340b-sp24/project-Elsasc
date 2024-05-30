@@ -4,9 +4,9 @@ function LocationCard(props){
     const handleLike = props.handleLike;
     const keyVal = props.keyVal;
     const tagsList = item.tags.map((tag) => {
-      return (<li className="list-group-item tag">{tag}</li>);
+      return (<li className="list-group-item tag" key={tag}>{tag}</li>);
     });
-    console.log(item.tags)
+    // console.log(item.tags)
     return(
       
       <div className="col my-5">

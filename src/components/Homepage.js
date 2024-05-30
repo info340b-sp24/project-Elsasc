@@ -5,7 +5,12 @@ import React, { useEffect, useState } from 'react';
 import locations from '../data/Location.json'
 import {LocationCardList} from './LocationCardList'
 import { Filter } from './Filter';
-export function Homepage() {
+
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/Dropdown';
+
+export function Homepage(props) {
+  
   const [likedItems, setLikedItems] = useState([]);
 
 
@@ -38,17 +43,17 @@ export function Homepage() {
 
       <h1 className="my-0 py-0">Seattle best locations</h1>
         <div className="container">
-          <input
+          {/* <input
             type="text"
             className="form-control mb-3 my-3"
             placeholder="Search..."
-          />
+          /> */}
 
           <div className="row">
             <div className="col bg-auto justify-content-md-center mx-5">
               {/* <!-- Filter --> */}
              
-                <Filter applyFilterCallback={props.applyFilterCallback}/>
+                <Filter applyTagFilterCallback={props.applyTagFilterCallback}  applyPriceFilterCallback={props.applyPriceFilterCallback} applySearchFilterCallback={props.applySearchFilterCallback}/>
             </div>
           </div>
          
@@ -56,7 +61,7 @@ export function Homepage() {
           
           <h2 className="fs-2 text-center">Locations</h2>
           
-          <LocationCardList locations={locations}/>
+          <LocationCardList locations={props.locations}/>
           </div>
       </main>
       

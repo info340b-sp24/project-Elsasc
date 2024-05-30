@@ -21,40 +21,83 @@ export default function App(props){
 // HERE IS WHERE THE FILTER CURRENTLY SITS 
 // WHERE THE FILTER GOES IS from App.js -> Homepage.js -> Filter.js (Buttons currently in process of fixing)
     
-    const [filterTag, setFilterTag] = useState(null);
-    const [filterPrice, setFilterPrice] = useState(null);
-
+    const [filterTag, setFilterTag] = useState('All');
+    const [filterPrice, setFilterPrice] = useState('All');
+    const [filterSearch, setFilterSearch] = useState('');
     
     
-    function applyFilter(tag, price){
+    function applyTagFilter(tag){
+        console.log("1Currently tag filter is: " + tag)
         setFilterTag(tag)
-        setFilterPrice(price)
+        console.log("2Currently tag filter is: " + tag)
 
     }
 
-    const filteredLocData = props.locations.filter((loc) => {
-        if (filterTag === null && filterPrice === null){
-          return loc;
-        }
+    function applyPriceFilter(price){
+        console.log("1Currently price filter is: " + price)
+        setFilterPrice(price)
+        console.log("2Currently price filter is: " + price)
+
+    }
+
+    function applySearchFilter(searchTerm){
+        setFilterSearch(searchTerm)
+    }
+
+    // const filteredLocData = props.locations.filter((loc) => {
+    //     if (filterTag === null && filterPrice === null){
+    //       return loc;
+    //     }
         
-        else if(filterPrice === null){
-          if (filterTag.some((tagName) => loc.tags.includes(tagName))){ // This code checks if 2 different arrays have any common value 
+    //     else if(filterPrice === null){
+    //       if (filterTag.some((tagName) => loc.tags.includes(tagName))){ // This code checks if 2 different arrays have any common value 
             
-          }
+    //       }
             
-        }
-        else if(filterTag === null){
-            if (filterPrice === loc.price){
-                return loc;
-            }
-        }
-        else{
-            if ((filterTag.some((tagName) => loc.tags.includes(tagName))) && (filterPrice === loc.price)){
-                    return loc;
-                }
-        }
-      });
+    //     }
+    //     else if(filterTag === null){
+    //         if (filterPrice === loc.price){
+    //             return loc;
+    //         }
+    //     }
+    //     else{
+    //         if ((filterTag.some((tagName) => loc.tags.includes(tagName))) && (filterPrice === loc.price)){
+    //                 return loc;
+    //             }
+    //     }
+    //   });
     
+
+    const filteredLocData = locations.filter((loc) => {
+        if (filterTag === 'All' && (filterPrice === 'All')){
+            return loc;
+        }
+        else if ((loc.tags.includes(filterTag)) && (filterPrice === 'All')){
+            console.log("just tag")
+            return loc;
+        }
+        else if ((filterTag === 'All') && (filterPrice === loc.price)){
+            console.log("just price")
+            return loc;
+        }
+        else if ((loc.tags.includes(filterTag)) && (filterPrice === loc.price)){
+            console.log("doublefilter")
+            return loc;
+        }
+    })
+    
+    const searchFilteredLocData = filteredLocData.filter((loc) => {
+        if (filterSearch.length < 1){
+            return loc;
+        }
+        else {
+        const titleUpper = loc.title.toUpperCase()
+        const searchUpper = filterSearch.toUpperCase()
+            if (titleUpper.includes(searchUpper)){
+            return loc;
+        }
+    }
+    });
     
     
     return (
@@ -62,7 +105,7 @@ export default function App(props){
     <NavBar/>
     
     <Routes>
-    <Route path="homepage" element={<Homepage locations={locations} applyFilterCallback={applyFilter}/>} />
+    <Route path="homepage" element={<Homepage locations={searchFilteredLocData} applyTagFilterCallback={applyTagFilter}  applyPriceFilterCallback={applyPriceFilter}  applySearchFilterCallback={applySearchFilter}/>} />
     <Route path="liked-locations" element={<LikedLocation LikedLocationList={SampleLikedLocations}/>} />
     <Route path="timeline" element={<Timeline />} />
     <Route path="quiz" element={<Quiz />} />
