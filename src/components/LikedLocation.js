@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { LikedLocationList } from './likedLocationList';
 // import { Link } from "react-router-dom";
-import { LocationCardList } from "./LocationCardList";
+
 
 export function LikedLocation(props) {
+    console.log("Liked Locations")
     const likedLocationList = props.LikedLocationList
     return (
         <html className='liked-locations' lang='en'>
@@ -21,9 +23,9 @@ export function LikedLocation(props) {
             <body className="home-page">
 
                 <main>
-                <h1 className="fs-2 text-start"> Locations you liked </h1>
+                <h1 className="fs-2 text-center pt-5"> Locations you liked </h1>
                 <div className="container">
-                    <LocationCardList locations={likedLocationList} />
+                    <LikedLocationList locations={likedLocationList} />
                 </div>
                 </main>
             </body>

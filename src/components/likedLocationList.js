@@ -1,12 +1,11 @@
 import { useEffect } from "react";
-
 import { getDatabase, ref, set, get, update } from "firebase/database";
 import app from "../firebaseConfig";
 
 
+
 function LocationCard(props){
     const item = props.location;
-
     async function handleLike(key, isLiked, elem){
       const db = getDatabase(app)
         const dbref = ref(db, "locations/"+key)
@@ -24,7 +23,6 @@ function LocationCard(props){
     const tagsList = item.tags.map((tag) => {
       return (<li className="list-group-item tag" key={tag}>{tag}</li>);
     });
-    // console.log(item.tags)
     return(
       
       <div className="col my-5">
@@ -64,32 +62,15 @@ function LocationCard(props){
     );
 }
 
-export function LocationCardList(props){
-
-  useEffect(()=>{
-    console.log("you have changed something")
-  }, [props.searchQ])
-
-  const mySearchQ = props.filterSearchQ.toLowerCase()
-  const myPrice = props.filterPrice.toLowerCase()
-  const myTag = props.filterTag
+export function LikedLocationList(props){
   const locations = props.locations;
-
-  const filterSearch = locations.filter((item)=> {
-    return mySearchQ === '' ? item : item.title.toLowerCase().includes(mySearchQ)
-  })
-
-  const filterTag = filterSearch.filter((item)=> {
-    return myTag === 'All' ? item : item.tags.includes(myTag)
-  })
-
-  const filterPrice = filterTag.filter((item)=> {
-    return myPrice === 'all' ? item : item.price.toLowerCase().includes(myPrice)
-  })
-    const locationList = filterPrice.map((location, index) => {
+    const locationList = locations.map((location, index) => {
+      if(location.isLiked){
         return(<div key={index}>
           <LocationCard location={location} keyVal={index} key={index}/>
-          </div>);        
+          </div>);
+      }
+        
     })
     return (
       <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4">

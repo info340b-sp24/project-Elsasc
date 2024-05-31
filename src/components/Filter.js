@@ -16,19 +16,19 @@ export function Filter(props) {
 
 
   const handleTagFilterClick = (event) => {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     props.applyTagFilterCallback(event.target.value)
     setTagButtonName(event.target.value)
   }
 
   const handlePriceFilterClick = (event) => {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     props.applyPriceFilterCallback(event.target.value)
     setPriceButtonName(event.target.value)
   }
 
   const handleSearchChange = (event) => {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     props.applySearchFilterCallback(event.target.value)
 
   }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import '../index.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -9,13 +9,21 @@ import { LikedLocation } from './LikedLocation';
 import { Timeline } from './timeline';
 import { Footer1 } from './Footer';
 import { NavBar } from './NavBar';
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, useLocation} from 'react-router-dom';
 import { BrowserRouter } from 'react-dom/client';
+
+
+//importing firebase and its methods
+import { getDatabase, ref, get } from "firebase/database";
+import app from "../firebaseConfig"
 
 import SampleLikedLocations from '../data/SampleLikedLoc.json'
 import locations from '../data/Location.json'
 
 export default function App(props){
+console.log("is that app")
+    const theRoute = useLocation()
+    const [myLocations, setLocations] = useState([])
     
  
 // HERE IS WHERE THE FILTER CURRENTLY SITS 
@@ -25,47 +33,46 @@ export default function App(props){
     const [filterPrice, setFilterPrice] = useState('All');
     const [filterSearch, setFilterSearch] = useState('');
     
-    
+    function runThisText(){
+        console.log("att call")
+    }
+
     function applyTagFilter(tag){
-        console.log("1Currently tag filter is: " + tag)
         setFilterTag(tag)
-        console.log("2Currently tag filter is: " + tag)
 
     }
 
     function applyPriceFilter(price){
-        console.log("1Currently price filter is: " + price)
         setFilterPrice(price)
-        console.log("2Currently price filter is: " + price)
-
     }
 
     function applySearchFilter(searchTerm){
         setFilterSearch(searchTerm)
     }
 
-    // const filteredLocData = props.locations.filter((loc) => {
-    //     if (filterTag === null && filterPrice === null){
-    //       return loc;
-    //     }
-        
-    //     else if(filterPrice === null){
-    //       if (filterTag.some((tagName) => loc.tags.includes(tagName))){ // This code checks if 2 different arrays have any common value 
-            
-    //       }
-            
-    //     }
-    //     else if(filterTag === null){
-    //         if (filterPrice === loc.price){
-    //             return loc;
-    //         }
-    //     }
-    //     else{
-    //         if ((filterTag.some((tagName) => loc.tags.includes(tagName))) && (filterPrice === loc.price)){
-    //                 return loc;
-    //             }
-    //     }
-    //   });
+
+    async function getTheLocations(){
+        const db = getDatabase(app)
+        const newDocRef = ref(db, "locations")
+        const snapshot = await get(newDocRef)
+  
+        if(snapshot.exists()){
+            var myData = snapshot.val()
+            const dataWithKey = Object.keys(myData).map(theKey => {
+                return{
+                    ...myData[theKey],
+                    objectKey: theKey
+                }
+            })
+            setLocations(dataWithKey)
+        }else{
+            alert("something went wrong")
+        }
+    }
+
+    useEffect(()=>{
+        getTheLocations()
+    },[theRoute])
     
 
     const filteredLocData = locations.filter((loc) => {
@@ -105,8 +112,9 @@ export default function App(props){
     <NavBar/>
     
     <Routes>
-    <Route path="homepage" element={<Homepage locations={searchFilteredLocData} applyTagFilterCallback={applyTagFilter}  applyPriceFilterCallback={applyPriceFilter}  applySearchFilterCallback={applySearchFilter}/>} />
-    <Route path="liked-locations" element={<LikedLocation LikedLocationList={SampleLikedLocations}/>} />
+    <Route path="/" element={<Homepage locations={myLocations} myTestAttr={runThisText} applyTagFilterCallback={applyTagFilter}  applyPriceFilterCallback={applyPriceFilter}  applySearchFilterCallback={applySearchFilter} filterSearchQ={filterSearch} filterPrice={filterPrice} filterTag={filterTag}/>} />
+    <Route path="homepage" element={<Homepage locations={myLocations} myTestAttr={runThisText} applyTagFilterCallback={applyTagFilter}  applyPriceFilterCallback={applyPriceFilter}  applySearchFilterCallback={applySearchFilter} filterSearchQ={filterSearch} filterPrice={filterPrice} filterTag={filterTag}/>} />
+    <Route path="liked-locations" element={<LikedLocation LikedLocationList={myLocations}/>} />
     <Route path="timeline" element={<Timeline />} />
     <Route path="quiz" element={<Quiz />} />
     </Routes>
