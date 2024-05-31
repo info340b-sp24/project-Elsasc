@@ -1,12 +1,10 @@
 'use strict';
 
-import React from 'react';
+import React, { useState } from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../index.css';
-
-let currentDay = 1;
-
-let DaysAdded = [1];
 
 export function Timeline(props) {
   return (
@@ -87,89 +85,170 @@ function MainComponents(props) {
     <main className='timeline_main'>
       <DayManager />
       <Form />
-      <TimeEvents />
+      {/* <TimeEvents /> */}
     </main>
   );
 }
 
 function DayManager(props) {
+  const [Days, setNewDays]= useState([1]);
+
+  const [currentDay, setCurrentDay] = useState(1);
+
+  const addNewDay = () => {
+    const newDay = Days[Days.length-1] + 1;
+    const newDays = Days.concat(newDay)
+    setNewDays(newDays);
+    console.log(Days);
+  }
+
+  const handleDayClick = (event) => {
+    setCurrentDay(event.target.value);
+  }
+
   return (
     <div>
       <h1 className='timeline_title'>Timeline</h1>
-      <button className='timeline_button' type="button">Add a New Day</button>
-      <Scroller />
+      <button onClick={addNewDay} className='timeline_button' type="button">Add a New Day</button>
+      <div className='scroller'>
+        <ul className='Day-list scroller__inner'>
+          {Days.map((item) => {
+            return (
+              <li onClick={handleDayClick} key={item} value={item}>Day {item}</li>
+            );
+          })}
+        </ul>
+      </div>
       <h3 className='Day'>Day {currentDay}</h3>
     </div>
   );
 }
 
-function Scroller(props) {
-  return (
-    <div className='scroller'>
-      <ul className='Day-list scroller__inner'>
-        <li>Day {DaysAdded[0]}</li>
-      </ul>
-    </div>
-  );
-}
+// function Scroller(props) {
+//   return (
+//     <div className='scroller'>
+//       <ul className='Day-list scroller__inner'>
+//         <li>Day {DaysAdded[0]}</li>
+//       </ul>
+//     </div>
+//   );
+// }
 
 
 function Form(props) {
+  const [eventBox, setEventBox] = useState([]);
+
+  const [typedTime, setTime] = useState("");
+
+  const [typedTitle, setTitle] = useState("");
+
+  const [typedEvent, setEvent] = useState("");
+
+  const [timeButtonName, setTimeButtonName] = useState("All Times");
+
+  const handleTitleChange = (event) => {
+    const inputtedValue = event.target.value;
+    setTitle(inputtedValue);
+  }
+
+  const handleEventChange = (event) => {
+    const inputtedValue = event.target.value;
+    setEvent(inputtedValue);
+  }
+
+  const handleTimeFilterClick = (event) => {
+    console.log(event.target.value);
+    setTimeButtonName(event.target.value);
+    setTime(event.target.value);
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("submitting", typedTime, typedTitle, typedEvent);
+
+    console.log(eventBox);
+
+    console.log(eventBox.length);
+    if (eventBox.length % 2 === 0) {
+      const newEventBox = {time: typedTime, title: typedTitle, description: typedEvent, onRight: true};
+      setEventBox([...eventBox, newEventBox]);
+    } else {
+      const newEventBox = {time: typedTime, title: typedTitle, description: typedEvent, onRight: false};
+      setEventBox([...eventBox, newEventBox]);
+    }
+    console.log(eventBox);
+
+    setTime("");
+    setTitle("");
+    setEvent("");
+  }
+
+  const Times = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
+
+  const TimeOptions = Times.map((time, index) => {
+    const TimeButtonItem = <Dropdown.Item as="button" variant="success" value={time + ":00"} key={time + ":00"} onClick={handleTimeFilterClick}>{time + ":00"}</Dropdown.Item>
+    return TimeButtonItem;
+  });
+
   return (
-    <form method="get" className='timeline_addevent'>
-      <div className='timeline_addevent'>
-        <label for="time-start">Time-Start: </label>
-        <input type="text" name="time" id='time-start' required />
-      </div>
-      <div className='timeline_addevent'>
-        <label for="title">Title: </label>
-        <input type="text" name="title" id='title' required />
-      </div>
-      <div className='timeline_addevent'>
-        <label for="discription">Description: </label>
-        <input type="text" name="discription" id='discription' required />
-      </div>
-      <div className='timeline_addevent'>
-        <input type="submit" value="Add Event" />
-      </div>
-    </form>
-  );
-}
-
-function TimeEvents(props) {
-  return (
-    <div className='timeline'>
-      <TimeComponentRight />
-      <TimelineMiddle />
-      <TimeEvent />
-
-      <TimeEvent />
-       <TimelineMiddle />
-       <TimeComponentLeft />
-
-      <TimeComponentRight />
-      <TimelineMiddle />
-      <TimeEvent />
-
-      <TimeEvent />
-       <TimelineMiddle />
-       <TimeComponentLeft />
+    <div>
+      <form method="get" className='timeline_addevent' onSubmit={handleSubmit}>
+        <label>Time-Start: </label>
+        <DropdownButton id="dropdown-item-button" variant="success" title={timeButtonName} className="m-1">
+              {TimeOptions}
+        </DropdownButton>
+        {/* <div className='timeline_addevent'>
+          <label for="time-start">Time-Start: </label>
+          <input onChange={handleTimeChange} type="text" name="time" id='time-start' required />
+        </div> */}
+        <div className='timeline_addevent'>
+          <label for="title">Title: </label>
+          <input onChange={handleTitleChange} type="text" name="title" id='title' required />
+        </div>
+        <div className='timeline_addevent'>
+          <label for="discription">Description: </label>
+          <input onChange={handleEventChange} type="text" name="discription" id='discription' required />
+        </div>
+        <div className='timeline_addevent'>
+          <input type="submit" value="Add Event" />
+          {/* <button type="submit" className="btn btn-primary">Add Event</button> */}
+        </div>
+      </form>
+      {eventBox.map((item) => {
+        if (item.onRight === true) {
+          return (
+            <div className='timeline'>
+              {TimeComponentRight(item.time)}
+              <TimelineMiddle />
+              {TimeEvent(item.title, item.event)}
+            </div>
+          );
+        } else {
+          return (
+            <div className='timeline'>
+              {TimeComponentLeft(item.time)}
+              <TimelineMiddle />
+              {TimeEvent(item.title, item.event)}
+            </div>
+          );
+        }
+      })}
     </div>
   );
 }
 
-function TimeComponentRight(props) {
+function TimeComponentRight(time) {
   return (
     <div className='timeline_components'>
-      <div className='time time--right'>9:00 AM</div>
+      <div className='time time--right'>{time}</div>
     </div>
   );
 }
 
-function TimeComponentLeft(props) {
+function TimeComponentLeft(time) {
   return (
     <div className='timeline_components'>
-      <div className='time'>9:00 AM</div>
+      <div className='time'>{time}</div>
     </div>
   );
 }
@@ -182,12 +261,12 @@ function TimelineMiddle(props) {
   );
 }
 
-function TimeEvent(props) {
+function TimeEvent(title, description) {
   return (
     <div className='timeline_components timeline_components--bg'>
-      <h2 className='time_title'>Event title</h2>
+      <h2 className='time_title'>{title}</h2>
       <p className='time_event'>
-        Descriptions of the event. The place to go. And place the location card in this place.
+        {description}
       </p>
     </div>
   );
