@@ -1,42 +1,34 @@
 [
     {
-        "imageSrc": "./img/gas-works-park.jpeg",
-        "title": "Gas Works Park",
-        "description": "A beautiful park made from a repurposed industrial area",
-        "tags": "Tags: Park, Outdoor",
-        "price": "Price: Free",
-        "address": "2101 Northlake Way, WA 98103"
+        "imageSrc": "./img/e675d232-e8d2-40b1-9f10-e7443fb6dbf2.avif",
+        "title": "Space Needle",
+        "description": "View the downtown area & eat at the Space Needle",
+        "tags": ["Sightseeing", "Restaurant"],
+        "price": "Moderate",
+        "address": "400 Broad St, Seattle, WA 98109"
     },
     {
-        "imageSrc": "./img/Ivars.jpg",
-        "title": "Ivars",
-        "description": "Delicious fish and chips served next to the Puget Sound",
-        "tags": "Tags: Restaurant, Outdoor",
-        "price": "Price: Moderate",
-        "address": "1001 Alaskan Wy Ste. 102, Seattle, WA 98104"
+        "imageSrc": "./img/seattle_art_museum.jpg",
+        "title": "Seattle Art Museum",
+        "description": "Local Seattle museum, houses premier art collections",
+        "tags": ["Sightseeing", "Indoor"],
+        "price": "Cheap",
+        "address": "1300 1st Ave, Seattle, WA 98101"
     },
     {
-        "imageSrc": "./img/GameWorks-Seattle.jpg",
-        "title": "Gameworks Arcade",
-        "description": "A refurbished arcade with a variety of games to choose from.",
-        "tags": "Tags: Other, Indoor",
-        "price": "Price: Moderate",
-        "address": "2576 Aurora Ave N, Seattle, WA 98109"
+        "imageSrc": "./img/pike_place_market-seattle-washington-public_market.jpeg",
+        "title": "Pike Place Market",
+        "description": "Most Tourist Visited, popular for seafoods",
+        "tags": ["Outdoor", "Shopping"],
+        "price": "Free",
+        "address": "85 Pike St, Seattle, WA 98101"
     },
     {
-        "imageSrc": "./img/woodland-park-zoo.jpg",
-        "title": "Woodland Park Zoo",
-        "description": "An fun zoo and aquarium housing many wonderful animals",
-        "tags": "Tags: Sightseeing, Outdoor",
-        "price": "Price: Moderate",
-        "address": "2576 Aurora Ave N, Seattle, WA 98109"
-    },
-    {
-        "imageSrc": "./img/arboretum.jpg",
-        "title": "Washington Park Arboretum",
-        "description": "A variety of amazing gardens with different cultural displays",
-        "tags": "Tags: Sightseeing, Outdoor",
-        "price": "Price: Free",
-        "address": "2300 Arboretum Dr E, Seattle, WA 98112"
+        "imageSrc": "./img/bellevue-square-center.jpg",
+        "title": "Bellevue Square Center",
+        "description": "Over 200 retail stores, extensive shopping area",
+        "tags": ["Shopping", "Indoor"],
+        "price": "Moderate",
+        "address": "575 Bellevue Square, Bellevue, WA 98004"
     }
 ]

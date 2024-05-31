@@ -251,7 +251,11 @@ img.quiz-img {
 
 .like-btn:hover, .like-btn.liked {
   opacity: 1;
-  color: red;
+  color: red !important;
+}
+.liked.liked:hover {
+  opacity: 0.7;
+  color: gray !important;
 }
 
 body.home-page {
