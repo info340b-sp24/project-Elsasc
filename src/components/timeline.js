@@ -156,11 +156,6 @@ function Form(props) {
     setEvent(inputtedValue);
   }
 
-  const handleTimeFilterClick = (event) => {
-    console.log(event.target.value);
-    setTimeButtonName(event.target.value);
-    setTime(event.target.value);
-  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -181,6 +176,12 @@ function Form(props) {
     setTime("");
     setTitle("");
     setEvent("");
+  }
+
+  const handleTimeFilterClick = (event) => {
+    console.log(event.target.value);
+    setTimeButtonName(event.target.value);
+    setTime(event.target.value);
   }
 
   const Times = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
