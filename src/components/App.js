@@ -37,11 +37,11 @@ console.log("is that app")
  
 // HERE IS WHERE THE FILTER CURRENTLY SITS 
 // WHERE THE FILTER GOES IS from App.js -> Homepage.js -> Filter.js (Buttons currently in process of fixing)
-    
+
     const [filterTag, setFilterTag] = useState('All');
     const [filterPrice, setFilterPrice] = useState('All');
     const [filterSearch, setFilterSearch] = useState('');
-    
+
     function runThisText(){
         console.log("att call")
     }
@@ -64,7 +64,7 @@ console.log("is that app")
         const db = getDatabase(app)
         const newDocRef = ref(db, "locations")
         const snapshot = await get(newDocRef)
-  
+
         if(snapshot.exists()){
             var myData = snapshot.val()
             const dataWithKey = Object.keys(myData).map(theKey => {
@@ -82,7 +82,7 @@ console.log("is that app")
     useEffect(()=>{
         getTheLocations()
     },[theRoute])
-    
+
 
     const filteredLocData = locations.filter((loc) => {
         if (filterTag === 'All' && (filterPrice === 'All')){
@@ -101,7 +101,7 @@ console.log("is that app")
             return loc;
         }
     })
-    
+
     const searchFilteredLocData = filteredLocData.filter((loc) => {
         if (filterSearch.length < 1){
             return loc;
@@ -114,18 +114,19 @@ console.log("is that app")
         }
     }
     });
-    
-    
+
+
     return (
     <div>
     <NavBar/>
-    
+
     <Routes>
     <Route path="/" element={<Homepage locations={myLocations} myTestAttr={runThisText} applyTagFilterCallback={applyTagFilter}  applyPriceFilterCallback={applyPriceFilter}  applySearchFilterCallback={applySearchFilter} filterSearchQ={filterSearch} filterPrice={filterPrice} filterTag={filterTag}/>} />
     <Route path="homepage" element={<Homepage locations={myLocations} myTestAttr={runThisText} applyTagFilterCallback={applyTagFilter}  applyPriceFilterCallback={applyPriceFilter}  applySearchFilterCallback={applySearchFilter} filterSearchQ={filterSearch} filterPrice={filterPrice} filterTag={filterTag}/>} />
     <Route path="liked-locations" element={<LikedLocation LikedLocationList={myLocations}/>} />
     <Route path="timeline" element={<Timeline />} />
     <Route path="quiz" element={<Quiz />} />
+    <Route path='timeline/Day2' element={<Timeline />} />
     <Route path="login"/>
     </Routes>
 
