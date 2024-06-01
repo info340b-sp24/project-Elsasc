@@ -2,14 +2,15 @@
 
 import React, { createElement, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../index.css';
-import { render } from '@testing-library/react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 
+export function DayDetails() {
+  const params = useParams();
+  const DayNumber = params.
+}
 
 export function Timeline(props) {
   return (
@@ -23,15 +24,15 @@ export function Timeline(props) {
 function TimelineHead(props) {
   return (
     <head>
-      <meta charSet="utf-8" />
-      <meta name="author" content="Cole Elsasser, Brian Chiang, Vincent Li" />
-      <meta name="description" content="Timeline page for user to customize" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <meta charSet="utf-8"/>
+      <meta name="author" content="Cole Elsasser, Brian Chiang, Vincent Li"/>
+      <meta name="description" content="Timeline page for user to customize"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
       <title>Timeline</title>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-      <link rel="stylesheet" href="./index.css" />
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+      <link rel="stylesheet" href="./index.css"/>
 
-      <link rel="icon" type="image/x-icon" href="./img/space-needle-icon.png" />
+      <link rel="icon" type="image/x-icon" href="./img/space-needle-icon.png"/>
     </head>
   );
 }
@@ -62,7 +63,7 @@ function DayManager(props) {
   const [currentDay, setCurrentDay] = useState(1);
 
   const addNewDay = () => {
-    const newDay = Days[Days.length - 1] + 1;
+    const newDay = Days[Days.length-1] + 1;
     const newDays = Days.concat(newDay)
     console.log(newDays);
     setNewDays(newDays);
@@ -116,62 +117,34 @@ function Form(props) {
     setEvent(inputtedValue);
   }
 
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("submitting", typedTime, typedTitle, typedEvent);
+
+    console.log(eventBox);
+
+    console.log(eventBox.length);
+    if (eventBox.length % 2 === 0) {
+      const newEventBox = {time: typedTime, title: typedTitle, description: typedEvent, onRight: true};
+      setEventBox([...eventBox, newEventBox]);
+    } else {
+      const newEventBox = {time: typedTime, title: typedTitle, description: typedEvent, onRight: false};
+      setEventBox([...eventBox, newEventBox]);
+    }
+    console.log(eventBox);
+
+    setTime("");
+    setTitle("");
+    setEvent("");
+  }
+
   const handleTimeFilterClick = (event) => {
     event.preventDefault();
     console.log(event.target.value);
     setTimeButtonName(event.target.value);
     setTime(event.target.value);
   }
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("submitting", typedTime, typedTitle, typedEvent);
-    const newEventBox = [...eventBox, { time: typedTime, title: typedTitle, description: typedEvent, onRight: true }]
-
-    console.log(newEventBox);
-
-    console.log(newEventBox.length);
-    const sortedEventbox = newEventBox;
-    if (sortedEventbox.length > 0) {
-      sortedEventbox.sort((eventA, eventB) => {
-
-        if (eventA.time < eventB.time) {
-          return -1;
-        }
-        if (eventA.time > eventB.time) {
-          return 1;
-        }
-
-        return 0;
-      });
-      setEventBox(sortedEventbox);
-      
-    }
-
-    // const newEventBox = { time: typedTime, title: typedTitle, description: typedEvent, onRight: true };
-    console.log(eventBox);
-
-
-
-    // if (eventBox.length % 2 === 0) {
-    //   const newEventBox = {time: typedTime, title: typedTitle, description: typedEvent, onRight: true};
-    //   setEventBox([...eventBox, newEventBox]);
-    // } else {
-    //   const newEventBox = {time: typedTime, title: typedTitle, description: typedEvent, onRight: false};
-    //   setEventBox([...eventBox, newEventBox]);
-    // }
-    // console.log(eventBox.sort((eventA, eventB) => eventA.time.localeCompare(eventB.time)));
-    // console.log("Above");
-
-    // Sort eventbox
-
-    // setEventBox();
-
-    // setTime("");
-    // setTitle("");
-    // setEvent("");
-  }
-
 
   const Times = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
 
@@ -205,13 +178,9 @@ function Form(props) {
       <form method="get" className='timeline_addevent' onSubmit={handleSubmit}>
         <div className='timeline_addevent'>
           <label>Time-Start: </label>
-          <Form.Group>
           <DropdownButton id="dropdown-item-button" variant="success" title={timeButtonName} className="m-1">
                 {TimeOptions}
           </DropdownButton>
-          </Form.Group>
-       
-
         </div>
         {/* <div className='timeline_addevent'>
           <label for="time-start">Time-Start: </label>
