@@ -5,6 +5,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../index.css';
+import { render } from '@testing-library/react';
 
 export function Timeline(props) {
   return (
@@ -106,17 +107,19 @@ function DayManager(props) {
     setCurrentDay(event.target.value);
   }
 
+  const renderDays = Days.map((item) => {
+    return (
+      <li onClick={handleDayClick} key={item} value={item}>Day {item}</li>
+    );
+  })
+
   return (
     <div>
       <h1 className='timeline_title'>Timeline</h1>
       <button onClick={addNewDay} className='timeline_button' type="button">Add a New Day</button>
       <div className='scroller'>
         <ul className='Day-list scroller__inner'>
-          {Days.map((item) => {
-            return (
-              <li onClick={handleDayClick} key={item} value={item}>Day {item}</li>
-            );
-          })}
+          {renderDays}
         </ul>
       </div>
       <h3 className='Day'>Day {currentDay}</h3>
@@ -191,13 +194,35 @@ function Form(props) {
     return TimeButtonItem;
   });
 
+  const renderTimeline = eventBox.map((item, index) => {
+    if (item.onRight === true) {
+      return (
+        <div className='timeline' key={index}>
+          {TimeComponentRight(item.time)}
+          <TimelineMiddle />
+          {TimeEvent(item.title, item.event)}
+        </div>
+      );
+    } else {
+      return (
+        <div className='timeline' key={index}>
+          {TimeComponentLeft(item.time)}
+          <TimelineMiddle />
+          {TimeEvent(item.title, item.event)}
+        </div>
+      );
+    }
+  })
+
   return (
     <div>
       <form method="get" className='timeline_addevent' onSubmit={handleSubmit}>
-        <label>Time-Start: </label>
-        <DropdownButton id="dropdown-item-button" variant="success" title={timeButtonName} className="m-1">
-              {TimeOptions}
-        </DropdownButton>
+        <div className='timeline_addevent'>
+          <label>Time-Start: </label>
+          <DropdownButton id="dropdown-item-button" variant="success" title={timeButtonName} className="m-1">
+                {TimeOptions}
+          </DropdownButton>
+        </div>
         {/* <div className='timeline_addevent'>
           <label for="time-start">Time-Start: </label>
           <input onChange={handleTimeChange} type="text" name="time" id='time-start' required />
@@ -215,25 +240,7 @@ function Form(props) {
           {/* <button type="submit" className="btn btn-primary">Add Event</button> */}
         </div>
       </form>
-      {eventBox.map((item) => {
-        if (item.onRight === true) {
-          return (
-            <div className='timeline'>
-              {TimeComponentRight(item.time)}
-              <TimelineMiddle />
-              {TimeEvent(item.title, item.event)}
-            </div>
-          );
-        } else {
-          return (
-            <div className='timeline'>
-              {TimeComponentLeft(item.time)}
-              <TimelineMiddle />
-              {TimeEvent(item.title, item.event)}
-            </div>
-          );
-        }
-      })}
+      {renderTimeline}
     </div>
   );
 }
