@@ -48,7 +48,7 @@ function MainComponents(props) {
   return (
     <main className='timeline_main'>
       <DayManager />
-      <Form />
+      <EventForm />
       {/* <TimeEvents /> */}
     </main>
   );
@@ -95,7 +95,7 @@ function DayManager(props) {
   );
 }
 
-function Form(props) {
+function EventForm(props) {
   const [eventBox, setEventBox] = useState([]);
 
   const [typedTime, setTime] = useState("");
