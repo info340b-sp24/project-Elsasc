@@ -103,6 +103,10 @@ function QuizQuestion(props) {
   const handleButtonClick = props.handleButtonClick;
   const currentQ = props.currentQ;
 
+const ansButtons = questionArray[currentQ].QAnswers.map((answer, index) =>
+  <button key={index} className="btn btn-outline-primary me-3 my-3" type="button" onClick={handleButtonClick} value={answer.AnsTag} data-bs-toggle="button">{answer.AnsText}</button>)
+;
+
   return (
     <div key={currentQ.QNum} className="card border border-dark rounded shadow-lg mb-4">
       <div className="card-title">
@@ -111,8 +115,9 @@ function QuizQuestion(props) {
 
       <div className="card-body">
         <div className="d-grid gap-2 px-2 d-md-block rounded text-center">
-          {questionArray[currentQ].QAnswers.map((answer, index) =>
-            <button key={index} className="btn btn-outline-primary me-3 my-3" type="button" onClick={handleButtonClick} value={answer.AnsTag} data-bs-toggle="button">{answer.AnsText}</button>)}
+          {/* {questionArray[currentQ].QAnswers.map((answer, index) =>
+            <button key={index} className="btn btn-outline-primary me-3 my-3" type="button" onClick={handleButtonClick} value={answer.AnsTag} data-bs-toggle="button">{answer.AnsText}</button>)} */}
+          {ansButtons}
         </div>
       </div>
 
@@ -124,6 +129,9 @@ function QuizResult(props) {
   const handleButtonClick = props.handleButtonClick;
   const currentQ = props.currentQ;
   const unqTaglist = [... new Set(taglist)];
+  const reccTags = unqTaglist.map((tag) =>
+    <p className="fs-4" key={tag}>{tag + ": " + tagDescriptions[tag]}</p>)
+  
   return (
     <div key={currentQ.QNum} className="card border border-dark rounded shadow-lg mb-5 pd-0">
       <div className="card-title">
@@ -133,10 +141,12 @@ function QuizResult(props) {
       <div className="card-body">
         <div className="d-grid gap-2 px-2 d-md-block rounded">
           <p className="fs-3"> We would reccommend you look for the following tags that might appeal to you most</p>
-          {unqTaglist.map((tag) =>
+          {/* {unqTaglist.map((tag) =>
             <p className="fs-4" key={tag}>{tag + ": " + tagDescriptions[tag]}</p>
           )
-          }
+          } */}
+
+          {reccTags}
         </div>
       </div>
 

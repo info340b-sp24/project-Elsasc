@@ -9,7 +9,7 @@ import { LikedLocation } from './LikedLocation';
 import { Timeline } from './timeline';
 import { Footer1 } from './Footer';
 import { NavBar } from './NavBar';
-import {Routes, Route, useLocation} from 'react-router-dom';
+import {Routes, Route, useLocation, Navigate, useNavigate, Outlet, navigateTo} from 'react-router-dom';
 import { BrowserRouter } from 'react-dom/client';
 
 
@@ -19,12 +19,21 @@ import app from "../firebaseConfig"
 
 import SampleLikedLocations from '../data/SampleLikedLoc.json'
 import locations from '../data/Location.json'
+import Users from '../data/Users.json'
 
 export default function App(props){
 console.log("is that app")
     const theRoute = useLocation()
     const [myLocations, setLocations] = useState([])
+   
+    // User integration
+    const [currentUser, setCurrentUser] = useState(Users[0])
+
+    const loginUser = (userObj) => {
+        console.log("logging in as", userObj.userName);
+        setCurrentUser(userObj);
     
+      }
  
 // HERE IS WHERE THE FILTER CURRENTLY SITS 
 // WHERE THE FILTER GOES IS from App.js -> Homepage.js -> Filter.js (Buttons currently in process of fixing)
@@ -117,6 +126,7 @@ console.log("is that app")
     <Route path="liked-locations" element={<LikedLocation LikedLocationList={myLocations}/>} />
     <Route path="timeline" element={<Timeline />} />
     <Route path="quiz" element={<Quiz />} />
+    <Route path="login"/>
     </Routes>
 
     <Footer1 />
