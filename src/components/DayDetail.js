@@ -2,11 +2,15 @@
 
 import React, { createElement, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../index.css';
-import { render } from '@testing-library/react';
+
+export function DayDetails() {
+  const params = useParams();
+  const DayNumber = params.
+}
 
 export function Timeline(props) {
   return (
