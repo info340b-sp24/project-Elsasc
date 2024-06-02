@@ -7,12 +7,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../index.css';
 
-export function DayDetails() {
-  const params = useParams();
-  const DayNumber = params.
-}
-
-export function Timeline(props) {
+export function DayDetails(props) {
   return (
     <html lang="en">
       <TimelineHead />
@@ -56,11 +51,17 @@ function MainComponents(props) {
 }
 
 function DayManager(props) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+
+  const params = useParams();
+
+  const DayNumber = params.DayNumber;
+
+  const current = parseInt(DayNumber);
 
   const [Days, setNewDays]= useState([1]);
 
-  const [currentDay, setCurrentDay] = useState(1);
+  const [currentDay, setCurrentDay] = useState(current);
 
   const addNewDay = () => {
     const newDay = Days[Days.length-1] + 1;
@@ -72,7 +73,7 @@ function DayManager(props) {
   const handleDayClick = (event) => {
     setCurrentDay(event.target.value);
     console.log(currentDay);
-    navigate("/timeline");
+    // navigate("/timeline");
   }
 
   const renderDays = Days.map((item) => {
@@ -238,15 +239,3 @@ function TimeEvent(title, description) {
     </div>
   );
 }
-
-// function Footer(props) {
-//   return (
-//     <footer>
-//       <p class="copy-right-notes"> Copyright &copy; Created by
-//           <a href="elsascol@uw.edu">elsascol@uw.edu</a>
-//           <a href="cch0223@uw.edu">cch0223@uw.edu</a>
-//           <a href="zli2003@uw.edu">zli2003@uw.edu</a>. 2024
-//       </p>
-//     </footer>
-//   );
-// }

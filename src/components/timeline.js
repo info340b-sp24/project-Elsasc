@@ -55,7 +55,6 @@ function MainComponents(props) {
 }
 
 function DayManager(props) {
-  const navigate = useNavigate();
 
   const [Days, setNewDays]= useState([1]);
 
@@ -69,14 +68,14 @@ function DayManager(props) {
   }
 
   const handleDayClick = (event) => {
+    console.log(event.target.value);
     setCurrentDay(event.target.value);
     console.log(currentDay);
-    navigate("/timeline");
   }
 
   const renderDays = Days.map((item) => {
     return (
-      <li  key={item} value={item}><Link onClick={handleDayClick} to={"/timeline/Day" + item}>Day {item}</Link></li>
+      <li key={item} value={item}><Link onClick={handleDayClick} to={"/timeline/Day" + item}>Day {item}</Link></li>
       // <Link onClick={handleDayClick} to={"/timeline/Day" + item}>Day {item}</Link>
     );
   })
@@ -145,7 +144,7 @@ function EventForm(props) {
         return 0;
       });
       setEventBox(sortedEventbox);
-      
+
     }
 
     // const newEventBox = { time: typedTime, title: typedTitle, description: typedEvent, onRight: true };
@@ -210,7 +209,7 @@ function EventForm(props) {
                 {TimeOptions}
           </DropdownButton>
           </Form.Group>
-       
+
 
         </div>
         {/* <div className='timeline_addevent'>

@@ -7,6 +7,7 @@ import { Quiz } from './Quiz';
 import {Homepage} from './Homepage'
 import { LikedLocation } from './LikedLocation';
 import { Timeline } from './timeline';
+import { DayDetails } from './DayDetail';
 import { Footer1 } from './Footer';
 import { NavBar } from './NavBar';
 import {Routes, Route, useLocation, Navigate, useNavigate, Outlet, navigateTo} from 'react-router-dom';
@@ -25,17 +26,17 @@ export default function App(props){
 console.log("is that app")
     const theRoute = useLocation()
     const [myLocations, setLocations] = useState([])
-   
+
     // User integration
     const [currentUser, setCurrentUser] = useState(Users[0])
 
     const loginUser = (userObj) => {
         console.log("logging in as", userObj.userName);
         setCurrentUser(userObj);
-    
+
       }
- 
-// HERE IS WHERE THE FILTER CURRENTLY SITS 
+
+// HERE IS WHERE THE FILTER CURRENTLY SITS
 // WHERE THE FILTER GOES IS from App.js -> Homepage.js -> Filter.js (Buttons currently in process of fixing)
 
     const [filterTag, setFilterTag] = useState('All');
@@ -124,9 +125,10 @@ console.log("is that app")
     <Route path="/" element={<Homepage locations={myLocations} myTestAttr={runThisText} applyTagFilterCallback={applyTagFilter}  applyPriceFilterCallback={applyPriceFilter}  applySearchFilterCallback={applySearchFilter} filterSearchQ={filterSearch} filterPrice={filterPrice} filterTag={filterTag}/>} />
     <Route path="homepage" element={<Homepage locations={myLocations} myTestAttr={runThisText} applyTagFilterCallback={applyTagFilter}  applyPriceFilterCallback={applyPriceFilter}  applySearchFilterCallback={applySearchFilter} filterSearchQ={filterSearch} filterPrice={filterPrice} filterTag={filterTag}/>} />
     <Route path="liked-locations" element={<LikedLocation LikedLocationList={myLocations}/>} />
-    <Route path="timeline" element={<Timeline />} />
+    <Route path="timeline" element={<Timeline />}>
+        <Route path=':DayNumber' element={<DayDetails />} />
+    </Route>
     <Route path="quiz" element={<Quiz />} />
-    <Route path='timeline/Day2' element={<Timeline />} />
     <Route path="login"/>
     </Routes>
 
