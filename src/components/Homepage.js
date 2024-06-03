@@ -5,8 +5,6 @@ import React, { useEffect, useState } from 'react';
 import locations from '../data/Location.json'
 import {LocationCardList} from './LocationCardList'
 import { Filter } from './Filter';
-
-
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/Dropdown';
 
@@ -16,7 +14,6 @@ export function Homepage(props) {
   const [mySearchQ, setSearchQ] = useState("")
 
   props.myTestAttr()
-
 
   return ( 
   

@@ -1,8 +1,6 @@
 import { useEffect } from "react";
-
 import { getDatabase, ref, set, get, update } from "firebase/database";
 import app from "../firebaseConfig";
-
 
 function LocationCard(props){
     const item = props.location;
