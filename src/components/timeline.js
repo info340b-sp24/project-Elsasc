@@ -9,7 +9,7 @@ import '../index.css';
 import { render } from '@testing-library/react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { ref, set as firebaseSet, getDatabase, onValue, remove } from 'firebase/database';
+import { ref, set as firebaseSet, getDatabase, onValue, remove, get} from 'firebase/database';
 
 export function Timeline(props) {
   return (
@@ -108,14 +108,20 @@ function EventForm(props) {
 
   const [timeButtonName, setTimeButtonName] = useState("All Times");
 
+  const [clearEvents, setClearEvents] = useState(false);
+
+
   const currentUserId = currentUser.userId
-  const db = getDatabase(); //"the database"
-  const timelineRef = ref(db, "timeline");
-  
+ 
+
   const handleClearEvents = (event) => {
-    
-      onValue(timelineRef, (snapshot) =>{
+    event.preventDefault();
+    console.log("Clear Triggered");
+    const db = getDatabase(); //"the database"
+    const timelineRef = ref(db, "timeline");
+      get(timelineRef, (snapshot) =>{
         snapshot.forEach((eventItem) => {
+          console.log("remove");
           remove(eventItem.ref);
         })
       })
@@ -123,11 +129,13 @@ function EventForm(props) {
   }
 
   const handleTitleChange = (event) => {
+    event.preventDefault();
     const inputtedValue = event.target.value;
     setTitle(inputtedValue);
   }
 
   const handleEventChange = (event) => {
+    event.preventDefault();
     const inputtedValue = event.target.value;
     setEvent(inputtedValue);
   }
@@ -142,7 +150,7 @@ function EventForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log("submitting", typedTime, typedTitle, typedEvent);
+    console.log("submitting", typedTime, typedTitle, typedEvent);
     const newEventBox = [...eventBox, { time: typedTime, title: typedTitle, description: typedEvent, onRight: true }]
 
     // console.log(newEventBox);
@@ -162,7 +170,6 @@ function EventForm(props) {
         return 0;
       });
       setEventBox(sortedEventbox);
-
       const db = getDatabase(); //"the database"
       const timelineRef = ref(db, "timeline");
 
@@ -197,24 +204,19 @@ function EventForm(props) {
   }
 
   useEffect(() => {
-    // console.log(currentUserId)
-    
-    // console.log(timelineRef)
-    // const userEventsRef = ref(timelineRef, currentUserId1);
-
-
-    //returns a function that will "unregister" (turn off) the listener
-    // const unregisterFunction = onValue(timelineRef, (snapshot) => {
-    //   const userEventsValue = snapshot.val()
-    //   setEventBox(userEventsValue)
-
-    // })
+    const db = getDatabase(); //"the database"
+    const timelineRef = ref(db, "timeline");
 
     const unregisterFunction = onValue(timelineRef, (snapshot) => {
       const timelineUserEvents = snapshot.val();
       if (timelineUserEvents !== null) {
         setEventBox(timelineUserEvents)
       }
+      // if (clearEvents === true){
+      //   setEventBox([]);
+      //   setClearEvents(false);
+      // }
+
       // else if (timelineUserEvents === null){
       //   setEventBox([])
       // }
@@ -225,7 +227,7 @@ function EventForm(props) {
       unregisterFunction(); //call the unregister function
     }
     return cleanup; //effect hook callback returns the cleanup function
-  })
+  }, []);
 
 
   const Times = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
