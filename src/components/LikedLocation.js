@@ -7,8 +7,8 @@ export function LikedLocation(props) {
     console.log("Liked Locations")
     const likedLocationList = props.LikedLocationList
     return (
-        <html className='liked-locations' lang='en'>
-            <head>
+        <div className='home-page' lang='en'>
+            {/* <head>
                 <meta charSet="utf-8"></meta>
                 <meta name="author" content="Cole Elsasser, Brian Chiang, Vincent Li"></meta>
                 <meta name="description" content="Liked locations by the user"></meta>
@@ -19,18 +19,17 @@ export function LikedLocation(props) {
 
                 <link rel="stylesheet" href="css/style.css"></link>
                 <title>Seattle is FUN! Liked Locations</title>
-            </head>
-            <body className="home-page">
-
+            </head> */}
+            <div className="home-page">
                 <main>
                 <h1 className="fs-2 text-center pt-5"> Locations you liked </h1>
                 <div className="container">
                     <LikedLocationList locations={likedLocationList} />
                 </div>
                 </main>
-            </body>
+            </div>
 
-        </html>
+        </div>
     );
 }
 

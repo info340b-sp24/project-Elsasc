@@ -108,13 +108,12 @@ function EventForm(props) {
 
   const [timeButtonName, setTimeButtonName] = useState("All Times");
 
-  const [clearEvents, setClearEvents] = useState(false);
-
   const currentUserId = currentUser.userId
-
+  const db = getDatabase(); //"the database"
+  const timelineRef = ref(db, "timeline");
+  
   const handleClearEvents = (event) => {
-    const db = getDatabase(); //"the database"
-    const timelineRef = ref(db, "timeline");
+    
       onValue(timelineRef, (snapshot) =>{
         snapshot.forEach((eventItem) => {
           remove(eventItem.ref);
@@ -143,12 +142,12 @@ function EventForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("submitting", typedTime, typedTitle, typedEvent);
+    // console.log("submitting", typedTime, typedTitle, typedEvent);
     const newEventBox = [...eventBox, { time: typedTime, title: typedTitle, description: typedEvent, onRight: true }]
 
-    console.log(newEventBox);
+    // console.log(newEventBox);
 
-    console.log(newEventBox.length);
+    // console.log(newEventBox.length);
     const sortedEventbox = newEventBox;
     if (sortedEventbox.length > 0) {
       sortedEventbox.sort((eventA, eventB) => {
@@ -168,14 +167,13 @@ function EventForm(props) {
       const timelineRef = ref(db, "timeline");
 
       firebaseSet(timelineRef, sortedEventbox)
-        .then(() => console.log("data saved successfully!"))
         .catch(err => console.log(err))
     }
 
 
 
     // const newEventBox = { time: typedTime, title: typedTitle, description: typedEvent, onRight: true };
-    console.log(eventBox);
+    // console.log(eventBox);
 
 
 
@@ -199,12 +197,9 @@ function EventForm(props) {
   }
 
   useEffect(() => {
-    const db = getDatabase(); //"the database"
-
     // console.log(currentUserId)
-    const currentUserId1 = String(currentUserId)
-    const timelineRef = ref(db, "timeline");
-    console.log(timelineRef)
+    
+    // console.log(timelineRef)
     // const userEventsRef = ref(timelineRef, currentUserId1);
 
 
@@ -220,9 +215,9 @@ function EventForm(props) {
       if (timelineUserEvents !== null) {
         setEventBox(timelineUserEvents)
       }
-      else if (timelineUserEvents === null){
-        setEventBox([])
-      }
+      // else if (timelineUserEvents === null){
+      //   setEventBox([])
+      // }
     })
 
     //cleanup function for when component is removed

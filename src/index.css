@@ -5,9 +5,6 @@
  * {
   box-sizing: border-box;
 }
-html.liked-locations{
-  height: 100%;
-}
 
 html{
   height: 100%;
@@ -291,15 +288,18 @@ div.home-page {
 /* Media Queries for all pages */
 @media (min-width: 576px){
   div.quiz-body {
-    background-color: rgb(93, 151, 240)
+    background-color: rgb(93, 151, 240);
+    height: 100vh;
   }
 
   body.quiz-result{
-    background-color: rgb(47, 121, 231)
+    background-color: rgb(47, 121, 231);
+    height: 100vh;
   }
 
   div.home-page {
-    background-color: rgb(154, 190, 243)
+    background-color: rgb(154, 190, 243);
+    height: 100vh;
   }
 }
 
