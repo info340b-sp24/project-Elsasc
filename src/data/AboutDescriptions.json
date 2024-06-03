@@ -1,0 +1,18 @@
+[
+    {   
+        "pageId": "about-us",
+        "title": "About Us",
+        "description": "We are three UW students who love the city of Seattle. We all enjoyed our time so much that it hurts to hear that people feel like Seattle is a boring place with nothing to do. So we set out to change that. Our site includes a few fun features to look at. You can create a timeline, search and sort through our location list, like any cards you want to save for later, and finally feel free to take our quiz to see what tags you might want to search for first."
+    },
+    {
+        "pageId": "mission",
+        "title": "Mission Statement",
+        "description": "We are trying to bring awareness to the greatness that Seattle has to offer. We hope to create a place for both seattle natives and new travlers to discover new locations and plan their trips and really make the most of their time in this wonderful city!"
+    },
+    {
+        "pageId": "fun-facts",
+        "title": "Seattle Fun Facts",
+        "description": "We are three UW students who love the city of Seattle. We all enjoyed our time so much that it hurts to hear that people feel like Seattle is a boring place with nothing to do. So we set out to change that. Our site includes a few fun features to look at. You can create a timeline, search and sort through our location list, like any cards you want to save for later, and finally feel free to take our quiz to see what tags you might want to search for first."
+    }
+
+]

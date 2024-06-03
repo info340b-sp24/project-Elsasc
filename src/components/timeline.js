@@ -9,7 +9,7 @@ import '../index.css';
 import { render } from '@testing-library/react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { ref, set as firebaseSet, getDatabase, onValue } from 'firebase/database';
+import { ref, set as firebaseSet, getDatabase, onValue, removeValue} from 'firebase/database';
 
 export function Timeline(props) {
   return (
@@ -108,9 +108,15 @@ function EventForm(props) {
 
   const [timeButtonName, setTimeButtonName] = useState("All Times");
 
+  const [clearEvents, setClearEvents] = useState(false);
+
   const currentUserId= currentUser.userId 
 
-
+  const handleClearEvents = (event) => {
+    const db = getDatabase(); //"the database"
+    const timelineRef = ref(db, "timeline");
+    timelineRef.removeValue();
+  }
 
   const handleTitleChange = (event) => {
     const inputtedValue = event.target.value;
@@ -275,6 +281,10 @@ function EventForm(props) {
         <div className='timeline_addevent'>
           <input type="submit" value="Add Event" />
           {/* <button type="submit" className="btn btn-primary">Add Event</button> */}
+        
+        </div>
+        <div className='timeline_addevent'>
+          <input type="submit" value="Add Event" onClick={handleClearEvents} />        
         </div>
       </form>
       {renderTimeline}

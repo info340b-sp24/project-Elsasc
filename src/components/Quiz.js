@@ -6,9 +6,9 @@ import { QuizContainer } from './QuizContainer';
 
 export function Quiz(props){
     return(
-    <html className='quiz' lang="en">
+    <div className='quiz-html'>
         
-        <head>
+        {/* <head>
           <meta charSet="utf-8"></meta>
           <meta name="author" content="Cole Elsasser, Brian Chiang, Vincent Li"></meta>
           <meta name="description" content="Quiz for recommending locations"></meta>
@@ -22,16 +22,16 @@ export function Quiz(props){
         
           <link rel="stylesheet" href="css/style.css"></link>
         
-        </head>
+        </head> */}
         
-        <body className="quiz">    
+        <div className="quiz-body">    
         
         
-          <main className="quiz">
+          <div className="quiz-main">
             <QuizContainer />
-          </main>
+          </div>
         
-        </body>
-    </html>
+        </div>
+    </div>
     );
     }

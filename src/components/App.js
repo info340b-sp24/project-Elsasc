@@ -9,6 +9,7 @@ import { LikedLocation } from './LikedLocation';
 import { Timeline } from './timeline';
 import { Footer1 } from './Footer';
 import { NavBar } from './NavBar';
+import { AboutDetails } from './AboutDetails.js';
 import { AboutPage } from './About.js';
 import { Routes, Route, useLocation, Navigate, useNavigate, Outlet, navigateTo } from 'react-router-dom';
 import { BrowserRouter } from 'react-dom/client';
@@ -157,7 +158,9 @@ export default function App(props) {
                 <Route path="quiz" element={<Quiz />} />
                 <Route path='timeline/Day2' element={<Timeline />} />
                 <Route path="login" element={<LoginScreen currentUser={currentUser} loginCallback={loginUser} />} />
-                <Route path="about" element={<AboutPage />} />
+                <Route path="about" element={<AboutPage />}>
+                    <Route path=":aboutPageName" element={<AboutDetails />} />
+                </Route>
 
             </Routes>
 

@@ -85,7 +85,7 @@ function QuizQuestionList(props) {
     }
   }
 
-  console.log(taglist)
+  // console.log(taglist)
 
   if (currentQ === questionArray.length) {
     return (
