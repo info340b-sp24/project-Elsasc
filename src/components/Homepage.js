@@ -20,7 +20,7 @@ export function Homepage(props) {
 
   return ( 
   
-    <body className='home-page'>
+    <div className='home-page'>
     
       <main>
 
@@ -43,6 +43,6 @@ export function Homepage(props) {
           </div>
       </main>
       
-    </body>
+    </div>
   );
 }

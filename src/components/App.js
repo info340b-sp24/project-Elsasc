@@ -12,6 +12,7 @@ import { NavBar } from './NavBar';
 import { AboutDetails } from './AboutDetails.js';
 import { AboutPage } from './About.js';
 import { Routes, Route, useLocation, Navigate, useNavigate, Outlet, navigateTo } from 'react-router-dom';
+import { LearnMore } from './LearnMore.js';
 import { BrowserRouter } from 'react-dom/client';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
@@ -149,16 +150,16 @@ export default function App(props) {
             <NavBar currentUser={currentUser} />
 
             <Routes>
-                <Route path="/" element={<Homepage locations={myLocations} myTestAttr={runThisText} applyTagFilterCallback={applyTagFilter} applyPriceFilterCallback={applyPriceFilter} applySearchFilterCallback={applySearchFilter} filterSearchQ={filterSearch} filterPrice={filterPrice} filterTag={filterTag} />} />
+                {/* <Route path="*" element={<Homepage locations={myLocations} myTestAttr={runThisText} applyTagFilterCallback={applyTagFilter} applyPriceFilterCallback={applyPriceFilter} applySearchFilterCallback={applySearchFilter} filterSearchQ={filterSearch} filterPrice={filterPrice} filterTag={filterTag} />} /> */}
+                
+                <Route path="*" element={<Navigate to="/homepage"/>} />
                 <Route path="homepage" element={<Homepage locations={myLocations} myTestAttr={runThisText} applyTagFilterCallback={applyTagFilter} applyPriceFilterCallback={applyPriceFilter} applySearchFilterCallback={applySearchFilter} filterSearchQ={filterSearch} filterPrice={filterPrice} filterTag={filterTag} />} />
                 <Route path="liked-locations" element={<LikedLocation LikedLocationList={myLocations} />} />
-                
                 <Route path="timeline" element={<Timeline currentUser={currentUser} />} />
-                
                 <Route path="quiz" element={<Quiz />} />
-                <Route path='timeline/Day2' element={<Timeline />} />
                 <Route path="login" element={<LoginScreen currentUser={currentUser} loginCallback={loginUser} />} />
-                <Route path="about" element={<AboutPage />}>
+                <Route path="about" element={<AboutPage />}/>
+                <Route path="learn-more" element={<LearnMore />}>
                     <Route path=":aboutPageName" element={<AboutDetails />} />
                 </Route>
 

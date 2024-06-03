@@ -9,13 +9,13 @@ import '../index.css';
 import { render } from '@testing-library/react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { ref, set as firebaseSet, getDatabase, onValue, removeValue} from 'firebase/database';
+import { ref, set as firebaseSet, getDatabase, onValue, remove } from 'firebase/database';
 
 export function Timeline(props) {
   return (
     <html lang="en">
       <TimelineHead />
-      <TimelineBody currentUser={props.currentUser}/>
+      <TimelineBody currentUser={props.currentUser} />
     </html>
   );
 }
@@ -39,13 +39,13 @@ function TimelineHead(props) {
 function TimelineBody(props) {
   return (
     <body className='timeline_body'>
-      <MainComponents currentUser={props.currentUser}/>
+      <MainComponents currentUser={props.currentUser} />
     </body>
   )
 };
 
 function MainComponents(props) {
-  const [Days, setNewDays]= useState([1]);
+  const [Days, setNewDays] = useState([1]);
 
   const [currentDay, setCurrentDay] = useState(1);
 
@@ -61,18 +61,18 @@ function MainComponents(props) {
     setCurrentDay(event.target.value);
     console.log(Days);
   }
-  
+
   return (
     <main className='timeline_main'>
       {/* <DayManager Days={Days} currentDay={currentDay}handleDayClickCallback={handleDayClick} addNewDayCallback={addNewDay}/> */}
-      <EventForm currentUser={props.currentUser} currentDay={currentDay}/>
+      <EventForm currentUser={props.currentUser} currentDay={currentDay} />
       {/* <TimeEvents /> */}
     </main>
   );
 }
 
 function DayManager(props) {
-  
+
   const Days = props.Days;
 
   const renderDays = Days.map((day, index) => {
@@ -110,12 +110,17 @@ function EventForm(props) {
 
   const [clearEvents, setClearEvents] = useState(false);
 
-  const currentUserId= currentUser.userId 
+  const currentUserId = currentUser.userId
 
   const handleClearEvents = (event) => {
     const db = getDatabase(); //"the database"
     const timelineRef = ref(db, "timeline");
-    timelineRef.removeValue();
+      onValue(timelineRef, (snapshot) =>{
+        snapshot.forEach((eventItem) => {
+          remove(eventItem.ref);
+        })
+      })
+      setEventBox([]);
   }
 
   const handleTitleChange = (event) => {
@@ -161,13 +166,13 @@ function EventForm(props) {
 
       const db = getDatabase(); //"the database"
       const timelineRef = ref(db, "timeline");
-    
+
       firebaseSet(timelineRef, sortedEventbox)
-      .then(() => console.log("data saved successfully!"))
-      .catch(err => console.log(err))
+        .then(() => console.log("data saved successfully!"))
+        .catch(err => console.log(err))
     }
 
-    
+
 
     // const newEventBox = { time: typedTime, title: typedTitle, description: typedEvent, onRight: true };
     console.log(eventBox);
@@ -195,12 +200,13 @@ function EventForm(props) {
 
   useEffect(() => {
     const db = getDatabase(); //"the database"
-    
+
     // console.log(currentUserId)
     const currentUserId1 = String(currentUserId)
     const timelineRef = ref(db, "timeline");
+    console.log(timelineRef)
     // const userEventsRef = ref(timelineRef, currentUserId1);
-      
+
 
     //returns a function that will "unregister" (turn off) the listener
     // const unregisterFunction = onValue(timelineRef, (snapshot) => {
@@ -211,8 +217,11 @@ function EventForm(props) {
 
     const unregisterFunction = onValue(timelineRef, (snapshot) => {
       const timelineUserEvents = snapshot.val();
-      if (timelineUserEvents){
-      setEventBox(timelineUserEvents)
+      if (timelineUserEvents !== null) {
+        setEventBox(timelineUserEvents)
+      }
+      else if (timelineUserEvents === null){
+        setEventBox([])
       }
     })
 
@@ -259,9 +268,9 @@ function EventForm(props) {
         <div className='timeline_addevent'>
           <label>Time-Start: </label>
           <Form.Group>
-          <DropdownButton id="dropdown-item-button" variant="success" title={timeButtonName} className="m-1">
-                {TimeOptions}
-          </DropdownButton>
+            <DropdownButton id="dropdown-item-button" variant="success" title={timeButtonName} className="m-1">
+              {TimeOptions}
+            </DropdownButton>
           </Form.Group>
 
 
@@ -281,12 +290,12 @@ function EventForm(props) {
         <div className='timeline_addevent'>
           <input type="submit" value="Add Event" />
           {/* <button type="submit" className="btn btn-primary">Add Event</button> */}
-        
-        </div>
-        <div className='timeline_addevent'>
-          <input type="submit" value="Add Event" onClick={handleClearEvents} />        
+
         </div>
       </form>
+      <div className='button my-3'>
+        <input type="button" value="Clear Events" onClick={handleClearEvents} />
+      </div>
       {renderTimeline}
     </div>
   );
@@ -323,7 +332,6 @@ function TimeEvent(title, description) {
       <p className='time_event'>
         {description}
       </p>
-      button
     </div>
   );
 }

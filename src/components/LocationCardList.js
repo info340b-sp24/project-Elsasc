@@ -67,7 +67,7 @@ function LocationCard(props){
 export function LocationCardList(props){
 
   useEffect(()=>{
-    console.log("you have changed something")
+    // console.log("you have changed something")
   }, [props.searchQ])
 
   const mySearchQ = props.filterSearchQ.toLowerCase()
@@ -92,7 +92,7 @@ export function LocationCardList(props){
           </div>);        
     })
     return (
-      <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4">
+      <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
         {locationList}
       </div>
     );

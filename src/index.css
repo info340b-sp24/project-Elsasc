@@ -9,6 +9,14 @@ html.liked-locations{
   height: 100%;
 }
 
+html{
+  height: 100%;
+}
+
+body{
+  height: 100%;
+}
+
 .timeline_body {
   background-color: rgb(93, 151, 240)
 }
@@ -258,7 +266,7 @@ img.quiz-img {
   color: gray !important;
 }
 
-body.home-page {
+div.home-page {
   background: azure;
 }
 
@@ -290,7 +298,7 @@ body.home-page {
     background-color: rgb(47, 121, 231)
   }
 
-  body.home-page {
+  div.home-page {
     background-color: rgb(154, 190, 243)
   }
 }
@@ -319,7 +327,7 @@ body.home-page {
   }
 
   /* Home and Liked Locations page */
-  body.home-page{
+  div.home-page{
     background-image: url('../project-draft/img/austin-wehrwein-seattle-day-unsplash.jpg');
     background-size: cover;
     background-repeat: no-repeat;

@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { StyledFirebaseAuth } from 'react-firebaseui';
 import { GoogleAuthProvider, EmailAuthProvider, getAuth } from 'firebase/auth'
 
-
+// Code modified from authentication lecture (mentioned by the professor was ok to use)
 const configObj = {
   signInOptions: [
     {
