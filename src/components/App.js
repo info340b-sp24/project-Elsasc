@@ -24,7 +24,7 @@ import app from "../firebaseConfig"
 import SampleLikedLocations from '../data/SampleLikedLoc.json'
 import locations from '../data/Location.json'
 import Users from '../data/Users.json'
-import { LoginScreen } from './LogIn.js';
+import { LoginScreen } from './Login.js';
 
 export default function App(props) {
     const theRoute = useLocation()
