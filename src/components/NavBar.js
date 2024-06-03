@@ -3,6 +3,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
+import { getAuth, signOut } from 'firebase/auth';
+import userEvent from '@testing-library/user-event';
 
 
 
@@ -10,15 +12,27 @@ import { Link } from 'react-router-dom';
 export function NavBar(props) {
   const currentUser = props.currentUser;
 
+  const handleLogOut = (event) => {
+    //sign out here
+    console.log("LOGGED OUT")
+    signOut(getAuth());
+  }
+
   return (
     <header>
       <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">Seattle is Fun!</Navbar.Brand>
+          <Navbar.Brand>Seattle is Fun!</Navbar.Brand>
           <Nav>
-            <Link className="nav-link" to="/login">
-            Login
-            </Link>
+            {currentUser.userId !== null &&
+            <Link className="nav-link"> {"User: " + currentUser.userName} </Link>
+            }
+            {currentUser.userId === null &&
+            <Link className="nav-link" to="/login"> Login </Link>
+            }
+          </Nav>
+          <Nav>
+            <Link className="nav-link" onClick={handleLogOut}> Logout </Link>  
           </Nav>
           <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -34,6 +48,9 @@ export function NavBar(props) {
               </Nav>
               <Nav>
                 <Link className="nav-link" to="/quiz">Quiz</Link>
+              </Nav>
+              <Nav>
+                <Link className="nav-link" to="/about">About</Link>
               </Nav>
 
             </Nav>

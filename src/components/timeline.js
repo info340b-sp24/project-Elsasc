@@ -1,6 +1,6 @@
 'use strict';
 
-import React, { createElement, useState } from 'react';
+import React, { createElement, useState, useEffect } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom'
 import DropdownButton from 'react-bootstrap/DropdownButton';
@@ -9,13 +9,13 @@ import '../index.css';
 import { render } from '@testing-library/react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-
+import { ref, set as firebaseSet, getDatabase, onValue } from 'firebase/database';
 
 export function Timeline(props) {
   return (
     <html lang="en">
       <TimelineHead />
-      <TimelineBody />
+      <TimelineBody currentUser={props.currentUser}/>
     </html>
   );
 }
@@ -39,30 +39,19 @@ function TimelineHead(props) {
 function TimelineBody(props) {
   return (
     <body className='timeline_body'>
-      <MainComponents />
+      <MainComponents currentUser={props.currentUser}/>
     </body>
   )
 };
 
 function MainComponents(props) {
-  return (
-    <main className='timeline_main'>
-      <DayManager />
-      <EventForm />
-      {/* <TimeEvents /> */}
-    </main>
-  );
-}
-
-function DayManager(props) {
-
   const [Days, setNewDays]= useState([1]);
 
   const [currentDay, setCurrentDay] = useState(1);
 
   const addNewDay = () => {
-    const newDay = Days[Days.length - 1] + 1;
-    const newDays = Days.concat(newDay)
+    const newDay = Days.length + 1;
+    const newDays = [...Days, newDay]
     console.log(newDays);
     setNewDays(newDays);
   }
@@ -70,12 +59,25 @@ function DayManager(props) {
   const handleDayClick = (event) => {
     console.log(event.target.value);
     setCurrentDay(event.target.value);
-    console.log(currentDay);
+    console.log(Days);
   }
+  
+  return (
+    <main className='timeline_main'>
+      {/* <DayManager Days={Days} currentDay={currentDay}handleDayClickCallback={handleDayClick} addNewDayCallback={addNewDay}/> */}
+      <EventForm currentUser={props.currentUser} currentDay={currentDay}/>
+      {/* <TimeEvents /> */}
+    </main>
+  );
+}
 
-  const renderDays = Days.map((item) => {
+function DayManager(props) {
+  
+  const Days = props.Days;
+
+  const renderDays = Days.map((day, index) => {
     return (
-      <li key={item} value={item}><Link onClick={handleDayClick} to={"/timeline/Day" + item}>Day {item}</Link></li>
+      <li key={day} value={day}><Link value={index} onClick={props.handleDayClickCallback} to={"/timeline/Day" + day}>Day {day}</Link></li>
       // <Link onClick={handleDayClick} to={"/timeline/Day" + item}>Day {item}</Link>
     );
   })
@@ -83,18 +85,19 @@ function DayManager(props) {
   return (
     <div>
       <h1 className='timeline_title'>Timeline</h1>
-      <button onClick={addNewDay} className='timeline_button' type="button">Add a New Day</button>
+      <button onClick={props.addNewDayCallback} className='timeline_button' type="button">Add a New Day</button>
       <div className='scroller'>
         <ul className='Day-list scroller__inner'>
           {renderDays}
         </ul>
       </div>
-      <h3 className='Day'>Day {currentDay}</h3>
     </div>
   );
 }
 
 function EventForm(props) {
+  const currentDay = props.currentDay
+  const currentUser = props.currentUser
   const [eventBox, setEventBox] = useState([]);
 
   const [typedTime, setTime] = useState("");
@@ -104,6 +107,10 @@ function EventForm(props) {
   const [typedEvent, setEvent] = useState("");
 
   const [timeButtonName, setTimeButtonName] = useState("All Times");
+
+  const currentUserId= currentUser.userId 
+
+
 
   const handleTitleChange = (event) => {
     const inputtedValue = event.target.value;
@@ -120,6 +127,7 @@ function EventForm(props) {
     console.log(event.target.value);
     setTimeButtonName(event.target.value);
     setTime(event.target.value);
+    console.log(currentUser.userName)
   }
 
   const handleSubmit = (event) => {
@@ -145,7 +153,15 @@ function EventForm(props) {
       });
       setEventBox(sortedEventbox);
 
+      const db = getDatabase(); //"the database"
+      const timelineRef = ref(db, "timeline");
+    
+      firebaseSet(timelineRef, sortedEventbox)
+      .then(() => console.log("data saved successfully!"))
+      .catch(err => console.log(err))
     }
+
+    
 
     // const newEventBox = { time: typedTime, title: typedTitle, description: typedEvent, onRight: true };
     console.log(eventBox);
@@ -170,6 +186,36 @@ function EventForm(props) {
     // setTitle("");
     // setEvent("");
   }
+
+  useEffect(() => {
+    const db = getDatabase(); //"the database"
+    
+    // console.log(currentUserId)
+    const currentUserId1 = String(currentUserId)
+    const timelineRef = ref(db, "timeline");
+    // const userEventsRef = ref(timelineRef, currentUserId1);
+      
+
+    //returns a function that will "unregister" (turn off) the listener
+    // const unregisterFunction = onValue(timelineRef, (snapshot) => {
+    //   const userEventsValue = snapshot.val()
+    //   setEventBox(userEventsValue)
+
+    // })
+
+    const unregisterFunction = onValue(timelineRef, (snapshot) => {
+      const timelineUserEvents = snapshot.val();
+      if (timelineUserEvents){
+      setEventBox(timelineUserEvents)
+      }
+    })
+
+    //cleanup function for when component is removed
+    function cleanup() {
+      unregisterFunction(); //call the unregister function
+    }
+    return cleanup; //effect hook callback returns the cleanup function
+  })
 
 
   const Times = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
@@ -201,6 +247,8 @@ function EventForm(props) {
 
   return (
     <div>
+      <h3 className='Day'> Timeline: What do you want to plan?</h3>
+      <h4> Share the page link to your friends</h4>
       <form method="get" className='timeline_addevent' onSubmit={handleSubmit}>
         <div className='timeline_addevent'>
           <label>Time-Start: </label>
@@ -265,6 +313,7 @@ function TimeEvent(title, description) {
       <p className='time_event'>
         {description}
       </p>
+      button
     </div>
   );
 }
