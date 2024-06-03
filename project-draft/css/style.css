@@ -285,7 +285,7 @@ body.home-page {
   }
 
   /* Home and Liked Locations page */
-  body.home-page{
+  div.home-page{
     background-image: url('../img/austin-wehrwein-seattle-day-unsplash.jpg');
     background-size: cover;
     background-repeat: no-repeat;
