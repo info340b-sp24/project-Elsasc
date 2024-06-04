@@ -42,15 +42,12 @@ export default function App(props) {
                         // authenticator, a callback
         onAuthStateChanged(auth, (firebaseUser) => {
           if(firebaseUser) {
-            // console.log("signing in as", firebaseUser.displayName)
-            // console.log("firebaseuser: ", firebaseUser);
             firebaseUser.userId = firebaseUser.uid;
             firebaseUser.userName = firebaseUser.displayName;
             // console.log("firebaseuser after adding fields :", firebaseUser)
             setCurrentUser(firebaseUser);
           }
           else { //no user
-            // console.log("signed out");
             setCurrentUser(Users[0]); //change the null user
           }
         })
@@ -59,16 +56,15 @@ export default function App(props) {
       }, [])
 
 
-    //   USER STUFF ABOVE
-    // HERE IS WHERE THE FILTER CURRENTLY SITS 
-    // WHERE THE FILTER GOES IS from App.js -> Homepage.js -> Filter.js (Buttons currently in process of fixing)
+    //   USER integration above
+    // Filter (old) below
 
     const [filterTag, setFilterTag] = useState('All');
     const [filterPrice, setFilterPrice] = useState('All');
     const [filterSearch, setFilterSearch] = useState('');
 
     function runThisText() {
-        console.log("att call")
+        // console.log("att call")
     }
 
     function applyTagFilter(tag) {
@@ -108,7 +104,7 @@ export default function App(props) {
         getTheLocations()
     }, [theRoute])
 
-    // IGNORE REDUNDANT FILTER CODE, KEPT FOR FUTURE INTEREST
+    //  REDUNDANT FILTER CODE, KEPT FOR FUTURE INTEREST
     // const filteredLocData = locations.filter((loc) => {
     //     if (filterTag === 'All' && (filterPrice === 'All')) {
     //         return loc;

@@ -32,7 +32,7 @@ export function Filter(props) {
     props.applySearchFilterCallback(event.target.value)
 
   }
-  
+
   const tags = ["Indoor", "Outdoor", "Park", "Sightseeing", "Shopping", "Restaurant", "Other"];
   const prices = ["Free", "Cheap", "Moderate", "Expensive"];
 
@@ -76,6 +76,7 @@ export function Filter(props) {
             {priceOptions}
           </DropdownButton>
         </div>
+        <p className="fs-5 text-start">Hint: Click the heart symbol on the cards to see them on your liked locations page</p>
       </div>
     </div>
   );

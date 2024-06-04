@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import { useParams } from 'react-router-dom';
 import _ from 'lodash';
 import AboutDescriptions from '../data/AboutDescriptions.json'

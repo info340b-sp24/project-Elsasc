@@ -3,7 +3,6 @@ import { LikedLocationList } from './likedLocationList';
 // import { Link } from "react-router-dom";
 
 export function LikedLocation(props) {
-    console.log("Liked Locations")
     const likedLocationList = props.LikedLocationList
     return (
         <div className='home-page' lang='en'>

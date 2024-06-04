@@ -1,13 +1,10 @@
 'use strict';
 
-import React, { createElement, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom'
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../index.css';
-import { render } from '@testing-library/react';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { ref, set as firebaseSet, getDatabase, onValue, remove, get} from 'firebase/database';
 
@@ -22,58 +19,16 @@ export function Timeline(props) {
 }
 
 function MainComponents(props) {
-  const [Days, setNewDays] = useState([1]);
-
-  const [currentDay, setCurrentDay] = useState(1);
-
-  const addNewDay = () => {
-    const newDay = Days.length + 1;
-    const newDays = [...Days, newDay]
-    console.log(newDays);
-    setNewDays(newDays);
-  }
-
-  const handleDayClick = (event) => {
-    console.log(event.target.value);
-    setCurrentDay(event.target.value);
-    console.log(Days);
-  }
 
   return (
     <main className='timeline_main'>
-      {/* <DayManager Days={Days} currentDay={currentDay}handleDayClickCallback={handleDayClick} addNewDayCallback={addNewDay}/> */}
-      <EventForm currentUser={props.currentUser} currentDay={currentDay} />
-      {/* <TimeEvents /> */}
+      <EventForm currentUser={props.currentUser} />
     </main>
   );
 }
 
-function DayManager(props) {
-
-  const Days = props.Days;
-
-  const renderDays = Days.map((day, index) => {
-    return (
-      <li key={day} value={day}><Link value={index} onClick={props.handleDayClickCallback} to={"/timeline/Day" + day}>Day {day}</Link></li>
-      // <Link onClick={handleDayClick} to={"/timeline/Day" + item}>Day {item}</Link>
-    );
-  })
-
-  return (
-    <div>
-      <h1 className='timeline_title'>Timeline</h1>
-      <button onClick={props.addNewDayCallback} className='timeline_button' type="button">Add a New Day</button>
-      <div className='scroller'>
-        <ul className='Day-list scroller__inner'>
-          {renderDays}
-        </ul>
-      </div>
-    </div>
-  );
-}
 
 function EventForm(props) {
-  const currentDay = props.currentDay
   const currentUser = props.currentUser
   const [eventBox, setEventBox] = useState([]);
 
@@ -93,12 +48,11 @@ function EventForm(props) {
 
   const handleClearEvents = (event) => {
     event.preventDefault();
-    console.log("Clear Triggered");
+    // console.log("Clear Triggered");
     const db = getDatabase(); //"the database"
     const timelineRef = ref(db, "timeline");
       get(timelineRef, (snapshot) =>{
         snapshot.forEach((eventItem) => {
-          console.log("remove");
           remove(eventItem.ref);
         })
       })
@@ -119,15 +73,12 @@ function EventForm(props) {
 
   const handleTimeFilterClick = (event) => {
     event.preventDefault();
-    console.log(event.target.value);
     setTimeButtonName(event.target.value);
     setTime(event.target.value);
-    console.log(currentUser.userName)
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("submitting", typedTime, typedTitle, typedEvent);
     const newEventBox = [...eventBox, { time: typedTime, title: typedTitle, description: typedEvent, onRight: true }]
 
     // console.log(newEventBox);
@@ -153,31 +104,6 @@ function EventForm(props) {
       firebaseSet(timelineRef, sortedEventbox)
         .catch(err => console.log(err))
     }
-
-
-
-    // const newEventBox = { time: typedTime, title: typedTitle, description: typedEvent, onRight: true };
-    // console.log(eventBox);
-
-
-
-    // if (eventBox.length % 2 === 0) {
-    //   const newEventBox = {time: typedTime, title: typedTitle, description: typedEvent, onRight: true};
-    //   setEventBox([...eventBox, newEventBox]);
-    // } else {
-    //   const newEventBox = {time: typedTime, title: typedTitle, description: typedEvent, onRight: false};
-    //   setEventBox([...eventBox, newEventBox]);
-    // }
-    // console.log(eventBox.sort((eventA, eventB) => eventA.time.localeCompare(eventB.time)));
-    // console.log("Above");
-
-    // Sort eventbox
-
-    // setEventBox();
-
-    // setTime("");
-    // setTitle("");
-    // setEvent("");
   }
 
   useEffect(() => {
@@ -189,14 +115,6 @@ function EventForm(props) {
       if (timelineUserEvents !== null) {
         setEventBox(timelineUserEvents)
       }
-      // if (clearEvents === true){
-      //   setEventBox([]);
-      //   setClearEvents(false);
-      // }
-
-      // else if (timelineUserEvents === null){
-      //   setEventBox([])
-      // }
     })
 
     //cleanup function for when component is removed
@@ -219,8 +137,6 @@ function EventForm(props) {
       <div className='timeline' key={index}>
         <div className='time'>{item.time}</div>
         <TimeComponent title={item.title} description={item.description}/>
-        {/* <TimelineMiddle /> */}
-        {/* <TimeEvent title={item.title} description={item.description} /> */}
       </div>
     );
   })
@@ -231,7 +147,7 @@ function EventForm(props) {
       <h4> Share the page link to your friends</h4>
       <form method="get" className='timeline_addevent' onSubmit={handleSubmit}>
         <div className='timeline_addevent'>
-          <label htmlFor='time-start'>Time-Start: </label>
+          <p >Time-Start: </p>
           <Form.Group>
             <DropdownButton id="dropdown-item-button" variant="success" title={timeButtonName} className="m-1">
               {TimeOptions}
@@ -248,8 +164,6 @@ function EventForm(props) {
         </div>
         <div className='timeline_addevent'>
           <input type="submit" value="Add Event" />
-          {/* <button type="submit" className="btn btn-primary">Add Event</button> */}
-
         </div>
         <div className='hint'>(Hint: Select a specific time and edit your day plan's title and description,
           click <u>Add Event</u> to display in the timeline.)
@@ -275,28 +189,3 @@ function TimeComponent(props) {
     </div>
   );
 }
-
-// function TimeEvent(props) {
-//   const title = props.title;
-//   const description = props.description;
-//   return (
-//     <div className='timeline_components'>
-//       <h2 className='time_title'>{title}</h2>
-//       <p className='time_event'>
-//         {description}
-//       </p>
-//     </div>
-//   );
-// }
-
-// function Footer(props) {
-//   return (
-//     <footer>
-//       <p class="copy-right-notes"> Copyright &copy; Created by
-//           <a href="elsascol@uw.edu">elsascol@uw.edu</a>
-//           <a href="cch0223@uw.edu">cch0223@uw.edu</a>
-//           <a href="zli2003@uw.edu">zli2003@uw.edu</a>. 2024
-//       </p>
-//     </footer>
-//   );
-// }

@@ -7,7 +7,6 @@ export function AboutPage(props) {
 
     const aboutSectionButtons = aboutSections.map((section, index) => {
         let margin = "mb-3";
-        console.log(aboutSections.length)
         if (index === aboutSections.length - 1){
             margin = "mb-5"
         }

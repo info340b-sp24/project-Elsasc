@@ -110,16 +110,19 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ## Fixes from Last Draft: 
 - Added meta tags to the index.html
-- Fixed the issue of returning .map statements in QuizContainer.js and Filter.js
+- Changed the title to our metadata to our project name (Seattle is Fun)
+- Fixed the issue of using .map statements in returns and changed them to const variables in QuizContainer.js, Timeline.js and Filter.js 
 
 ## General Route Map:
 - Index.js
 - App.js -> Navbar.js & Footer.js (and all below)
 - Quiz.js -> QuizContainer.js 
 - Hompage.js -> LocationCardList.js & Filter.js
+- LikedLocations.js -> likedLocationList.js
 - timeline.js
 - About.js paramroutes -> AboutDetails.js -> LearnMore.js
 - Login.js
+
 
 ## App Content and Html
 - Project built using create-react-app in the root of the repo. Cleaned up extraneous files **React app repo cleaned**
@@ -130,7 +133,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Includes a form element.  **Timeline and homepage filter**
 
 ## React Components and Structure
--  App is broken up into a meaningful component hierarchy; each component reflects a "part" of the page **Chec
+-  App is broken up into a meaningful component hierarchy; each component reflects a "part" of the page
 -  Components are appropriately sized and scoped around data props 
 -  Components are defined as self-contained entities 
 - Data is passed through the app via props to components; props and state are appropriately distinguished. 
@@ -138,10 +141,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - **Group checked**
 
 ## React Interactivity (Feature List)
-- Quiz, Implemented in QuizContainer.js
-- Filter Implemented in LocationCardList.js and Filter.js 
-- Timeline add and delete items with data persistence firbase (implemented in timeline.js)
-- Like button, click like button and button add location to liked locations page with data persistence firebase. in likedlocations.js, LocationCardList.js
+- Quiz found on quiz page in navbar (on website), Implemented in QuizContainer.js
+- Filter (Homepage on website) Implemented in LocationCardList.js and Filter.js 
+- Timeline (Timeline page on website) add and delete items with data persistence firbase (implemented in timeline.js)
+- Like button (Homepage on website), click like button and button add location to liked locations page with data persistence firebase. in (App.js) likedlocations.js, LocationCardList.js
 
 ## Client Side Routing and Navigation
 - Correctly integrates react-router (specifying <Route>s, <Link>s, etc). **See App.js routing at bottom**
@@ -149,7 +152,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Includes 1 route with a path parameter. **About.js, AboutDetails.js, LearnMore.js, App.js**
 - Handles incorrect URLs and changes in access (e.g., login/logout) effectively. **See App.js routing at bottom**
 
-## Client Side Routing
+## Integrates Another React Library
 - Project imports another library (included in the package.json list of dependencies).
 - App imports external components.
 - App renders imported components (they do something).
@@ -165,4 +168,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - **Timeline.js writes new information to firebase and deletes it using the clear events button catches included**
 - **Like button changes liked value in firebase to show on LikedLocation page** 
 
-**Note the rest of the sections are largely based on past drafts/scattered throughout the code** 
+**Note: The rest of the sections are largely based on past drafts/scattered throughout the code as formatting methods** 
