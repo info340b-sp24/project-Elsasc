@@ -2,15 +2,10 @@
 
 
 /* timeline page */
- * {
+* {
   box-sizing: border-box;
 }
-
-html{
-  height: 100%;
-}
-
-body{
+html.liked-locations{
   height: 100%;
 }
 
@@ -85,7 +80,7 @@ body{
 
 .scroller {
   max-width: 650px;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .scroller__inner{
@@ -96,7 +91,10 @@ body{
 }
 
 form.timeline_addevent {
+  justify-content: center;
+  align-items: center;
   display: table;
+  width: 100%;
   background-color: white;
   border: 2px solid black;
   padding: 1em 1em;
@@ -121,12 +119,18 @@ label {
   padding-right: 10px;
 }
 
+.hint {
+  font-style: italic;
+  margin: 10px 0 0 0;
+}
+
 .timeline {
   margin: 1rem auto;
   max-width: 750px;
+  width: 70%;
   padding: 25px;
   border-radius: 25px;
-  display: grid;
+  display: table;
   font-family: 'Fira Sans', sans-serif;
   color: white;
   grid-template-columns: 1fr 3px 1fr;
@@ -134,11 +138,11 @@ label {
   border: 1px solid lightgoldenrodyellow;
 }
 
-.timeline_components {
+/* .timeline_components {
   margin: 0 20px 20px 20px;
-}
+} */
 
-.timeline_components--bg {
+.timeline_components {
   padding: 1.5em;
   background: skyblue;
   box-shadow: 0 0 5px black;
@@ -147,43 +151,73 @@ label {
 }
 
 .time {
-  align-items: end;
-  text-align: left;
-}
-
-.time--right {
-  text-align: right;
-}
-
-.timeline_middle {
-  position: relative;
-  background: white;
-}
-
-.timeline_point {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 15px;
-  height: 15px;
-  background: white;
-  border-radius: 15%;
+  text-align: center;
+  color:#000;
+  font-size: 20px;
+  margin: 0 5px 5px 5px;
 }
 
 .time_title {
   margin: 0;
-  font-size: 1.15em;
+  font-size: 1.2em;
+  text-decoration: underline;
+  text-transform: capitalize;
   font-weight: bold;
 }
 
 .time_event {
+  margin: 5px 0 0 0;
   line-height: 1.5;
 }
 
 .timeline_point_bottom {
   top: initial;
   bottom: 0;
+}
+
+/* Quiz Content */
+html.quiz{
+  height: 100%;
+
+}
+
+header{
+  font-family:Georgia, 'Times New Roman', Times, serif
+}
+
+body.quiz{
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  margin: 0;
+  background-color: rgb(93, 151, 240);
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+
+}
+
+body.quiz-result{
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  margin: 0;
+  background-color: rgb(243, 204, 76)
+}
+
+main.quiz{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+/*  */
+img.quiz-img {
+  width: 250px;
+  /* Get rid of conflicts when button is pressed. */
+  pointer-events: none;
+  user-select: none;
+}
+
+.card-img-top {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
 }
 
 /* Quiz Content */
@@ -232,7 +266,7 @@ img.quiz-img {
 }
 
 /* Homepage */
- 
+
 
 .like-btn {
   position: absolute;
@@ -335,6 +369,6 @@ div.home-page {
     height: 100%;
   }
 
-}  
+}
 
 

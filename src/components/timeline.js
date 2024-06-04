@@ -13,36 +13,13 @@ import { ref, set as firebaseSet, getDatabase, onValue, remove, get} from 'fireb
 
 export function Timeline(props) {
   return (
-    <html lang="en">
-      <TimelineHead />
-      <TimelineBody currentUser={props.currentUser} />
-    </html>
-  );
-}
-
-function TimelineHead(props) {
-  return (
-    <head>
-      <meta charSet="utf-8" />
-      <meta name="author" content="Cole Elsasser, Brian Chiang, Vincent Li" />
-      <meta name="description" content="Timeline page for user to customize" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      <title>Timeline</title>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-      <link rel="stylesheet" href="./index.css" />
-
-      <link rel="icon" type="image/x-icon" href="./img/space-needle-icon.png" />
-    </head>
-  );
-}
-
-function TimelineBody(props) {
-  return (
-    <body className='timeline_body'>
+    <div>
+      <div className='timeline_body'>
       <MainComponents currentUser={props.currentUser} />
-    </body>
-  )
-};
+    </div>
+    </div>
+  );
+}
 
 function MainComponents(props) {
   const [Days, setNewDays] = useState([1]);
@@ -112,7 +89,7 @@ function EventForm(props) {
 
 
   const currentUserId = currentUser.userId
- 
+
 
   const handleClearEvents = (event) => {
     event.preventDefault();
@@ -238,23 +215,14 @@ function EventForm(props) {
   });
 
   const renderTimeline = eventBox.map((item, index) => {
-    if (item.onRight === true) {
-      return (
-        <div className='timeline' key={index}>
-          {TimeComponentRight(item.time)}
-          <TimelineMiddle />
-          {TimeEvent(item.title, item.description)}
-        </div>
-      );
-    } else {
-      return (
-        <div className='timeline' key={index}>
-          {TimeComponentLeft(item.time)}
-          <TimelineMiddle />
-          {TimeEvent(item.title, item.description)}
-        </div>
-      );
-    }
+    return (
+      <div className='timeline' key={index}>
+        <div className='time'>{item.time}</div>
+        <TimeComponent title={item.title} description={item.description}/>
+        {/* <TimelineMiddle /> */}
+        {/* <TimeEvent title={item.title} description={item.description} /> */}
+      </div>
+    );
   })
 
   return (
@@ -263,31 +231,28 @@ function EventForm(props) {
       <h4> Share the page link to your friends</h4>
       <form method="get" className='timeline_addevent' onSubmit={handleSubmit}>
         <div className='timeline_addevent'>
-          <label>Time-Start: </label>
+          <label htmlFor='time-start'>Time-Start: </label>
           <Form.Group>
             <DropdownButton id="dropdown-item-button" variant="success" title={timeButtonName} className="m-1">
               {TimeOptions}
             </DropdownButton>
           </Form.Group>
-
-
         </div>
-        {/* <div className='timeline_addevent'>
-          <label for="time-start">Time-Start: </label>
-          <input onChange={handleTimeChange} type="text" name="time" id='time-start' required />
-        </div> */}
         <div className='timeline_addevent'>
-          <label for="title">Title: </label>
+          <label htmlFor="title">Title: </label>
           <input onChange={handleTitleChange} type="text" name="title" id='title' required />
         </div>
         <div className='timeline_addevent'>
-          <label for="discription">Description: </label>
+          <label htmlFor="discription">Description: </label>
           <input onChange={handleEventChange} type="text" name="discription" id='discription' required />
         </div>
         <div className='timeline_addevent'>
           <input type="submit" value="Add Event" />
           {/* <button type="submit" className="btn btn-primary">Add Event</button> */}
 
+        </div>
+        <div className='hint'>(Hint: Select a specific time and edit your day plan's title and description,
+          click <u>Add Event</u> to display in the timeline.)
         </div>
       </form>
       <div className='button my-3'>
@@ -298,33 +263,11 @@ function EventForm(props) {
   );
 }
 
-function TimeComponentRight(time) {
+function TimeComponent(props) {
+  const title = props.title;
+  const description = props.description;
   return (
     <div className='timeline_components'>
-      <div className='time time--right'>{time}</div>
-    </div>
-  );
-}
-
-function TimeComponentLeft(time) {
-  return (
-    <div className='timeline_components'>
-      <div className='time'>{time}</div>
-    </div>
-  );
-}
-
-function TimelineMiddle(props) {
-  return (
-    <div className='timeline_middle'>
-      <div className='timeline_point'></div>
-    </div>
-  );
-}
-
-function TimeEvent(title, description) {
-  return (
-    <div className='timeline_components timeline_components--bg'>
       <h2 className='time_title'>{title}</h2>
       <p className='time_event'>
         {description}
@@ -332,6 +275,19 @@ function TimeEvent(title, description) {
     </div>
   );
 }
+
+// function TimeEvent(props) {
+//   const title = props.title;
+//   const description = props.description;
+//   return (
+//     <div className='timeline_components'>
+//       <h2 className='time_title'>{title}</h2>
+//       <p className='time_event'>
+//         {description}
+//       </p>
+//     </div>
+//   );
+// }
 
 // function Footer(props) {
 //   return (
