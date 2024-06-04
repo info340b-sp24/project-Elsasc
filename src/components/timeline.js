@@ -6,7 +6,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../index.css';
 import Form from 'react-bootstrap/Form';
-import { ref, set as firebaseSet, getDatabase, onValue, remove, get} from 'firebase/database';
+import { ref, set as firebaseSet, getDatabase, onValue, remove, get, set} from 'firebase/database';
 
 export function Timeline(props) {
   return (
@@ -40,22 +40,17 @@ function EventForm(props) {
 
   const [timeButtonName, setTimeButtonName] = useState("All Times");
 
-  const [clearEvents, setClearEvents] = useState(false);
-
 
   const currentUserId = currentUser.userId
 
 
   const handleClearEvents = (event) => {
     event.preventDefault();
-    // console.log("Clear Triggered");
     const db = getDatabase(); //"the database"
     const timelineRef = ref(db, "timeline");
-      get(timelineRef, (snapshot) =>{
-        snapshot.forEach((eventItem) => {
-          remove(eventItem.ref);
-        })
-      })
+    firebaseSet(timelineRef, null)
+      .catch(err => console.log(err))
+
       setEventBox([]);
   }
 
@@ -81,9 +76,7 @@ function EventForm(props) {
     event.preventDefault();
     const newEventBox = [...eventBox, { time: typedTime, title: typedTitle, description: typedEvent, onRight: true }]
 
-    // console.log(newEventBox);
 
-    // console.log(newEventBox.length);
     const sortedEventbox = newEventBox;
     if (sortedEventbox.length > 0) {
       sortedEventbox.sort((eventA, eventB) => {
@@ -109,7 +102,6 @@ function EventForm(props) {
   useEffect(() => {
     const db = getDatabase(); //"the database"
     const timelineRef = ref(db, "timeline");
-
     const unregisterFunction = onValue(timelineRef, (snapshot) => {
       const timelineUserEvents = snapshot.val();
       if (timelineUserEvents !== null) {
