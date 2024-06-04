@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import tagDescriptions from '../data/TagDescriptions.json'
@@ -68,7 +67,7 @@ const questionArray = [
 const taglist = [] // Global Variable to be used to track the tags
 // Changes the question and records tag value from each point
 function QuizQuestionList(props) {
-  const quizQuestionJSON = props.quizQuestionsJSON; 
+  const quizQuestionJSON = props.quizQuestionsJSON;
 
   const [currentQ, setCurrentQ] = useState(0);
 
@@ -103,9 +102,9 @@ function QuizQuestion(props) {
   const handleButtonClick = props.handleButtonClick;
   const currentQ = props.currentQ;
 
-const ansButtons = questionArray[currentQ].QAnswers.map((answer, index) =>
-  <button key={index} className="btn btn-outline-primary me-3 my-3" type="button" onClick={handleButtonClick} value={answer.AnsTag} data-bs-toggle="button">{answer.AnsText}</button>)
-;
+  const ansButtons = questionArray[currentQ].QAnswers.map((answer, index) =>
+    <button key={index} className="btn btn-outline-primary me-3 my-3" type="button" onClick={handleButtonClick} value={answer.AnsTag} data-bs-toggle="button">{answer.AnsText}</button>)
+    ;
 
   return (
     <div key={currentQ.QNum} className="card border border-dark rounded shadow-lg mb-4">
@@ -115,8 +114,6 @@ const ansButtons = questionArray[currentQ].QAnswers.map((answer, index) =>
 
       <div className="card-body">
         <div className="d-grid gap-2 px-2 d-md-block rounded text-center">
-          {/* {questionArray[currentQ].QAnswers.map((answer, index) =>
-            <button key={index} className="btn btn-outline-primary me-3 my-3" type="button" onClick={handleButtonClick} value={answer.AnsTag} data-bs-toggle="button">{answer.AnsText}</button>)} */}
           {ansButtons}
         </div>
       </div>
@@ -131,7 +128,7 @@ function QuizResult(props) {
   const unqTaglist = [... new Set(taglist)];
   const reccTags = unqTaglist.map((tag) =>
     <p className="fs-4" key={tag}>{tag + ": " + tagDescriptions[tag]}</p>)
-  
+
   return (
     <div key={currentQ.QNum} className="card border border-dark rounded shadow-lg mb-5 pd-0">
       <div className="card-title">
@@ -141,11 +138,6 @@ function QuizResult(props) {
       <div className="card-body">
         <div className="d-grid gap-2 px-2 d-md-block rounded">
           <p className="fs-3"> We would reccommend you look for the following tags that might appeal to you most</p>
-          {/* {unqTaglist.map((tag) =>
-            <p className="fs-4" key={tag}>{tag + ": " + tagDescriptions[tag]}</p>
-          )
-          } */}
-
           {reccTags}
         </div>
       </div>
@@ -159,16 +151,15 @@ export function QuizContainer(props) {
       <div>
         <div className="d-flex  justify-content-center mx-5">
           <div className="container">
-            <h2 className="text-start py-4"> Quiz - What kind of traveler are you? </h2>
+            <h2 className="text-start"> Quiz - What kind of traveler are you? </h2>
+            <h3 className="text-start fs-5 pb-5"> Answer each question to find out what search tags might fit you best!</h3>
             <div className="row">
               <div className="col bg-auto justify-content-md-center">
-                <QuizQuestionList quizQuestionsJSON={QuizQuestions}/>
+                <QuizQuestionList quizQuestionsJSON={QuizQuestions} />
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
   );

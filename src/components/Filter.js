@@ -32,12 +32,7 @@ export function Filter(props) {
     props.applySearchFilterCallback(event.target.value)
 
   }
-
-  // let buttonColor = 'white'
-  // if (buttonActive){
-  //   //  Set button to desired color to activate
-  // }
-
+  
   const tags = ["Indoor", "Outdoor", "Park", "Sightseeing", "Shopping", "Restaurant", "Other"];
   const prices = ["Free", "Cheap", "Moderate", "Expensive"];
 
@@ -68,32 +63,13 @@ export function Filter(props) {
           </Form>
 
           <p className="fs-3 text-start">General Tags:</p>
-          {/* {tags.map((tag, index) => (
-            <button key={index} className="btn btn-outline-success" type="button" data-bs-toggle="button" onClick={handleButtonClick} style={{backgroundColor : 'white'}}>
-              {tag}
-            </button>
-            // <Button variant="outline-success" key={index} {buttonActive}>{tag}</Button>
-
-          ))} */}
-
+      
           <DropdownButton id="dropdown-item-button" variant="success" title={tagButtonName} className="m-1">
             <Dropdown.Item as="button" variant="success" value="All" key="All" onClick={handleTagFilterClick}>All</Dropdown.Item>
             {tagOptions}
           </DropdownButton>
-          {/* <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item> 
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-          </DropdownButton> */}
-
-
 
           <p className="fs-3 text-start">Tags - Price:</p>
-          {/* {prices.map((price, index) => (
-            <button key={index} className="btn btn-outline-success" type="button" data-bs-toggle="button">
-              {price}
-            </button>
-          ))} */}
 
           <DropdownButton id="dropdown-item-button" variant="success" title={priceButtonName} className="m-1">
             <Dropdown.Item as="button" variant="success" value="All" key="All" onClick={handlePriceFilterClick}>All</Dropdown.Item>

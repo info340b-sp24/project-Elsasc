@@ -101,3 +101,68 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Commented out code is mostly the work in progress implementation of additional interactive features
 - The QuizContainer file has a const variable using holding the quiz objects. This is there to allow for the img question to be asked as img elements cannot be stored in the JSON. JSON functionality is also working but doesn't include Q#4. The JSON with the quiz questions is passed as a prop however the constant is used so that question 4 can be displayed. 
 
+
+# FINAL PROJECT CHECKLIST/NOTES:
+## Most important notes:
+- If you get a firebase UI package missing error that can be solved with this npm install (npm install https://gitpkg.now.sh/gvillenave/firebaseui-web-react/dist), this was the git branch discussed in the auth lecture
+- There is left over code from the Firebase user interface. It doesn't impact the features and just provides the ability to log in and see the login on the NavBar (was left in after discussion between Cole & Zach)
+- There is left over filter code from a miscommunication resulting in 2 filter features being made. One (Coles) is commented out but was left in the code for future project work out that doesn't impact working filter code.
+
+## Fixes from Last Draft: 
+- Added meta tags to the index.html
+- Fixed the issue of returning .map statements in QuizContainer.js and Filter.js
+
+## General Route Map:
+- Index.js
+- App.js -> Navbar.js & Footer.js (and all below)
+- Quiz.js -> QuizContainer.js 
+- Hompage.js -> LocationCardList.js & Filter.js
+- timeline.js
+- About.js paramroutes -> AboutDetails.js -> LearnMore.js
+- Login.js
+
+## App Content and Html
+- Project built using create-react-app in the root of the repo. Cleaned up extraneous files **React app repo cleaned**
+- Specified meta data in HTML (title, author, description, and own favicon) **index.html (favicon.ico is a space needle)**
+- Includes sufficient content (e.g., multiple views of the data) **Filter provides multiple views and page is navigable**
+- Includes header element (with app name) and footer (with copyright) elements. **Header.js, footer.js**
+- Includes 3+ images or media content. **See about section or homepage**
+- Includes a form element.  **Timeline and homepage filter**
+
+## React Components and Structure
+-  App is broken up into a meaningful component hierarchy; each component reflects a "part" of the page **Chec
+-  Components are appropriately sized and scoped around data props 
+-  Components are defined as self-contained entities 
+- Data is passed through the app via props to components; props and state are appropriately distinguished. 
+- Content is only rendered on through components—no DOM calls! 
+- **Group checked**
+
+## React Interactivity (Feature List)
+- Quiz, Implemented in QuizContainer.js
+- Filter Implemented in LocationCardList.js and Filter.js 
+- Timeline add and delete items with data persistence firbase (implemented in timeline.js)
+- Like button, click like button and button add location to liked locations page with data persistence firebase. in likedlocations.js, LocationCardList.js
+
+## Client Side Routing and Navigation
+- Correctly integrates react-router (specifying <Route>s, <Link>s, etc). **See App.js routing at bottom**
+- Includes sufficient number of routes (3+). **See App.js routing at bottom**
+- Includes 1 route with a path parameter. **About.js, AboutDetails.js, LearnMore.js, App.js**
+- Handles incorrect URLs and changes in access (e.g., login/logout) effectively. **See App.js routing at bottom**
+
+## Client Side Routing
+- Project imports another library (included in the package.json list of dependencies).
+- App imports external components.
+- App renders imported components (they do something).
+- Library components are used in a meaningful way (support the functionality of the app)
+- **Navbar.js uses the react Navbar and About.js uses the react carousel**
+
+## Data Persistence (Firebase)
+- App integrates Firebase web service
+- App both reads from and writes to a Firebase (realtime) database
+- Firebase access is properly integrated with React (e.g., through effect hooks)
+- Catches and manages (e.g., displays) errors from data writing (.catch())
+- Firebase data is rendered in the app in a meaningful way
+- **Timeline.js writes new information to firebase and deletes it using the clear events button catches included**
+- **Like button changes liked value in firebase to show on LikedLocation page** 
+
+**Note the rest of the sections are largely based on past drafts/scattered throughout the code** 
